@@ -4,11 +4,13 @@ import { FormsModule} from '@angular/forms'
 
 import { AppComponent } from './app.component';
 import { TransactorFormComponent } from './transactor-form/transactor-form.component';
+import { LogInComponent } from './log-in/log-in.component';
 
 @NgModule({
   declarations: [
     AppComponent,
-    TransactorFormComponent
+    TransactorFormComponent,
+    LogInComponent
   ],
   imports: [
     BrowserModule,

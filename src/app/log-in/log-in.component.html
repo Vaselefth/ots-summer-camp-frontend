@@ -1,0 +1,19 @@
+<div class="container">
+    <div class="row">
+      <div class="col-xs-12">
+       
+        <hr>
+        <label>Username</label>
+        <input type="text" class="form-control" [(ngModel)]="username">
+        <br>
+        <label>Password</label>
+        <input type="password" class="form-control" [(ngModel)]="password">
+        <br>
+        <button
+          class="btn btn-primary"
+          [disabled]="username === '' || password === ''"
+          
+          >Login</button>
+      </div>
+    </div>
+  </div>
