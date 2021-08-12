@@ -1,4 +1,5 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
+import { NgForm } from '@angular/forms';
 
 @Component({
   selector: 'app-transactor-form',
@@ -6,10 +7,15 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./transactor-form.component.css']
 })
 export class TransactorFormComponent implements OnInit {
+  @ViewChild('f', { static: false }) signupForm: NgForm;
 
   constructor() { }
 
   ngOnInit(): void {
   }
 
+  onSubmit() {
+    let transactor = this.signupForm.value.userData;
+    console.log(transactor);
+  }
 }

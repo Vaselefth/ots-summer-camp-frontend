@@ -1,1 +1,178 @@
-<p>transactor-form works!</p>
+<h1>Άνοιγμα Καρτέλας Πελάτη - Προμηθευτή</h1>
+<div class="container"> 
+    <div class="row">
+      <div class="col-xs-12 col-sm-10 col-md-8 col-sm-offset-1 col-md-offset-2">
+        <form (ngSubmit)="onSubmit()" #f="ngForm">
+          <div
+            id="user-data"
+            ngModelGroup="userData"
+            #userData="ngModelGroup">
+            <div class="form-group">
+              <label for="username">Όνομα</label>
+              <input
+                type="text"
+                id="username"
+                class="form-control"
+                ngModel
+                name="username"
+                required>
+            </div>
+
+            <div class="form-group">
+              <label for="lastname">Επίθετο</label>
+              <input
+                type="text"
+                id="lastname"
+                class="form-control"
+                ngModel
+                name="lastname"
+                required>
+            </div>
+
+            <div class="form-group">
+              <label for="company_name">Όνομα Εταιρείας</label>
+              <input
+                type="text"
+                id="company_name"
+                class="form-control"
+                ngModel
+                name="company_name"
+                required>
+            </div>
+
+            <div class="form-group">
+            <label for="email">Email</label>
+            <input
+              type="email"
+              id="email"
+              class="form-control"
+              ngModel
+              name="email"
+              required>
+            </div>
+
+            <div class="form-group">
+            <label for="tin">Α.Φ.Μ</label>
+            <input
+              type="text"
+              id="tin"
+              class="form-control"
+              ngModel
+              name="tin"
+              required>
+          </div>
+
+          <div class="form-group">
+            <label for="doy">ΔΟΥ</label>
+            <input
+              type="text"
+              id="doy"
+              class="form-control"
+              ngModel
+              name="doy"
+              required>
+          </div>
+
+          <div class="form-group">
+            <label for="address">Διεύθυνση</label>
+            <input
+              type="text"
+              id="address"
+              class="form-control"
+              ngModel
+              name="address"
+              required>
+          </div>
+
+          <div class="form-group">
+            <label for="city">Πόλη</label>
+            <input
+              type="text"
+              id="city"
+              class="form-control"
+              ngModel
+              name="city"
+              required>
+          </div>
+
+          <div class="form-group">
+            <label for="phone">Αριθμός Τηλεφώνου</label>
+            <input
+              type="text"
+              id="phone"
+              class="form-control"
+              ngModel
+              name="phone"
+              required>
+          </div>
+
+          <div class="form-group">
+          <label for="postal_code">Ταχυδρομικός Κώδικας</label>
+          <input
+            type="text"
+            id="postal_code"
+            class="form-control"
+            ngModel
+            name="postal_code"
+            required>
+          </div>
+
+          <div class="form-group">
+          <label for="transactor_type">Είδος Συναλλασσόμενου</label>
+          <div class="radio">
+            <label>
+              <input
+                type="radio"
+                name="transactor"
+                ngModel
+                value="0"
+                required>
+              Πελάτης
+            </label>
+            <br>
+            <label>
+              <input
+                type="radio"
+                name="transactor"
+                ngModel
+                value="1"
+                required>
+              Προμηθευτής
+            </label>
+          </div>
+          </div>
+
+          <div class="form-group">
+            <label for="is_abroad">Πελάτης Εξωτερικού</label>
+            <div class="radio">
+              <label>
+                <input
+                  type="radio"
+                  name="abroad"
+                  ngModel
+                  value="0"
+                  required>
+                Ναι
+              </label>
+              <br>
+              <label>
+                <input
+                  type="radio"
+                  name="abroad"
+                  ngModel
+                  value="1"
+                  required>
+                Οχι
+              </label>
+            </div>
+            </div>
+
+      </div>
+          <button
+            class="btn btn-primary"
+            type="submit"
+            [disabled]="!f.valid">Submit</button>
+        </form>
+      </div>
+    </div>
+</div>
