@@ -8,36 +8,39 @@
             ngModelGroup="userData"
             #userData="ngModelGroup">
             <div class="form-group">
-              <label for="username">Όνομα</label>
+              <label for="firstName">Όνομα</label>
               <input
                 type="text"
-                id="username"
+                id="firstName"
                 class="form-control"
                 ngModel
-                name="username"
-                required>
+                name="firstName"
+                required
+                #firstName="ngModel">
+                <span class="help-block" *ngIf="!firstName.valid && firstName.touched">Το Όνομα είναι υποχρεωτικό πεδίο</span>
             </div>
 
             <div class="form-group">
-              <label for="lastname">Επίθετο</label>
+              <label for="lastName">Επίθετο</label>
               <input
                 type="text"
-                id="lastname"
+                id="lastName"
                 class="form-control"
                 ngModel
-                name="lastname"
-                required>
+                name="lastName"
+                required
+                #lastName="ngModel">
+                <span class="help-block" *ngIf="!lastName.valid && lastName.touched">Το Επίθετο είναι υποχρεωτικό πεδίο</span>
             </div>
 
             <div class="form-group">
-              <label for="company_name">Όνομα Εταιρείας</label>
+              <label for="companyName">Όνομα Εταιρείας</label>
               <input
                 type="text"
-                id="company_name"
+                id="companyName"
                 class="form-control"
                 ngModel
-                name="company_name"
-                required>
+                name="companyName">
             </div>
 
             <div class="form-group">
@@ -48,18 +51,26 @@
               class="form-control"
               ngModel
               name="email"
-              required>
+              required
+              email
+              #email="ngModel">
+              <span class="help-block" *ngIf="!email.valid && email.touched">Το email δεν είναι έγκυρης μορφής</span>
             </div>
 
             <div class="form-group">
             <label for="tin">Α.Φ.Μ</label>
             <input
+              (keypress)="numberOnly($event)"
               type="text"
               id="tin"
               class="form-control"
               ngModel
               name="tin"
-              required>
+              required
+              #tin="ngModel"
+              minlength="9"
+              maxlength="9">
+              <span class="help-block" *ngIf="!tin.valid && tin.touched">Το ΑΦΜ δεν είναι έγκυρο, πρέπει να είναι Αριθμός 9 ψηφίων</span>
           </div>
 
           <div class="form-group">
@@ -81,49 +92,64 @@
               class="form-control"
               ngModel
               name="address"
-              required>
+              required
+              #address="ngModel">
+              <span class="help-block" *ngIf="!address.valid && address.touched">Η Διεύθυνση είναι υποχρεωτικό πεδίο</span>
           </div>
 
           <div class="form-group">
             <label for="city">Πόλη</label>
-            <input
-              type="text"
+            <select
               id="city"
               class="form-control"
               ngModel
               name="city"
-              required>
+              required
+              #city="ngModel">
+              <option *ngFor="let city of cities" [value]="city">{{city}}</option>
+            </select>
+            <span class="help-block" *ngIf="!city.valid && city.touched">Η Πόλη είναι υποχρεωτικό πεδίο</span>
           </div>
 
           <div class="form-group">
-            <label for="phone">Αριθμός Τηλεφώνου</label>
+            <label for="phoneNumber">Αριθμός Τηλεφώνου</label>
             <input
+              (keypress)="numberOnly($event)"
               type="text"
-              id="phone"
+              id="phoneNumber"
               class="form-control"
               ngModel
-              name="phone"
-              required>
+              name="phoneNumber"
+              required
+              #phoneNumber="ngModel"
+              minlength="10"
+              maxlength="10">
+              <span class="help-block" *ngIf="!phoneNumber.valid && phoneNumber.touched">Ο αριθμός τηλεφώνου δεν είναι έγκυρος, πρέπει να είναι Αριθμός 10 ψηφίων</span>
           </div>
 
           <div class="form-group">
-          <label for="postal_code">Ταχυδρομικός Κώδικας</label>
+          <label for="postalCode">Ταχυδρομικός Κώδικας</label>
           <input
+            (keypress)="numberOnly($event)"
             type="text"
-            id="postal_code"
+            id="postalCode"
             class="form-control"
             ngModel
-            name="postal_code"
-            required>
+            name="postalCode"
+            required
+            #postalCode="ngModel"
+            minlength="5"
+            maxlength="5">
+            <span class="help-block" *ngIf="!postalCode.valid && postalCode.touched">Ο Ταχυδρομικός Κώδικας είναι υποχρεωτικό πεδίο και πρέπει να είναι Αριθμός 5 ψηφίων</span>
           </div>
 
           <div class="form-group">
-          <label for="transactor_type">Είδος Συναλλασσόμενου</label>
+          <label for="transactorType">Είδος Συναλλασσόμενου</label>
           <div class="radio">
             <label>
               <input
                 type="radio"
-                name="transactor"
+                name="transactorType"
                 ngModel
                 value="0"
                 required>
@@ -133,7 +159,7 @@
             <label>
               <input
                 type="radio"
-                name="transactor"
+                name="transactorType"
                 ngModel
                 value="1"
                 required>
@@ -143,7 +169,7 @@
           </div>
 
           <div class="form-group">
-            <label for="is_abroad">Πελάτης Εξωτερικού</label>
+            <label for="abroad">Πελάτης Εξωτερικού</label>
             <div class="radio">
               <label>
                 <input

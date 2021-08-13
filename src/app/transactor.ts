@@ -9,9 +9,9 @@ export class Transactor {
       public doy: string,
       public address: string,
       public city: string,
-      public phoneNumber: number,
+      public phoneNumber: string,
       public postalCode: string,
-      public transactorType: number,
-      public isAbroad: number
+      public transactorType: boolean,
+      public abroad: boolean
     ) {}
 }
