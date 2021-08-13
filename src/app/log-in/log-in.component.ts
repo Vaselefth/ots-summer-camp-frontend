@@ -1,21 +1,20 @@
 import { Component, OnInit } from '@angular/core';
+import { NgForm } from '@angular/forms';
+import { AuthService } from '../auth.service';
 
 @Component({
   selector: 'app-log-in',
   templateUrl: './log-in.component.html',
   styleUrls: ['./log-in.component.css']
 })
-export class LogInComponent implements OnInit {
+export class LogInComponent {
 
-  username: string;
-  password: string;
+  constructor(private authService: AuthService){}
 
-  constructor() { }
-
-  ngOnInit(): void {
-
-    this.username = "";
-    this.password = "";
+  onSubmit(form: NgForm){
+    const username = form.value.username;
+    const password = form.value.password;
+    console.log(form.value);
+    form.reset();
   }
-
 }
