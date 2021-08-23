@@ -7,7 +7,7 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';  
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';  
 import { HttpClientModule } from '@angular/common/http';  
-import {DataTablesModule} from 'angular-datatables';  
+//import {DataTablesModule} from 'angular-datatables';  
 import { ProductsListComponent } from './products-list/products-list.component';
 import { ProductService } from './product.service';
 
@@ -24,7 +24,8 @@ import { ProductService } from './product.service';
     FormsModule,  
     ReactiveFormsModule,  
     HttpClientModule,  
-    DataTablesModule  ],
+    //DataTablesModule 
+   ],
   
   providers: [ProductService],
   bootstrap: [AppComponent]
