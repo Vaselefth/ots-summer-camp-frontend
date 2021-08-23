@@ -1,0 +1,40 @@
+<h1>Λίστα Επαφών Πελατών-Προμηθευτών</h1>
+<button
+    (click)="onClickList()"
+    class="btn btn-primary pull-left"
+    type="button">Εμφάνιση όλων των επαφών
+</button>
+<br>
+<br>
+<br>    
+<div>
+    <b>Ευρέση Συναλλασσόμενου με βάση το </b> 
+    <label for="tin">Α.Φ.Μ:</label>&nbsp;
+    <input
+        (keypress)="numberOnly($event)"
+        size="10"
+        type="text"
+        id="tin"
+        ngModel
+        name="tin"
+        required
+        #tin="ngModel"
+        minlength="9"
+        maxlength="9">&nbsp;    
+    <span class="help-block" *ngIf="!tin.valid && tin.touched">Το ΑΦΜ δεν είναι έγκυρο, πρέπει να είναι Αριθμός 9 ψηφίων</span>
+    <button     
+    class="btn btn-primary"
+    type="button">Εμφάνιση Συναλλασσόμενου  
+</button>
+</div>
+<div class="row">
+    <div class="col-xs-12 col-md-6 col-md-offset-3">
+        <p *ngIf="loadedTransactors.length < 1">No Transactors available!</p>
+        <ul class="list-group" *ngIf="loadedTransactors.length >=1">
+            <li class="list-group-item" *ngFor="let transactor of loadedTransactors">   
+                <p> {{ transactor.firstName }} </p>
+             </li>  
+         </ul>
+    </div>
+</div>
+

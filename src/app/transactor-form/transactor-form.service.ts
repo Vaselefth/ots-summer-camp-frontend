@@ -18,7 +18,7 @@ export class TransactorFormService {
     return true;
   }
 
-  onCreatePost(postData: {transactor: Transactor}) {
+  onCreateTransactor(postData: {transactor: Transactor}) {
     this.http.post<Transactor>(
       TRANSACTORS_API, 
       postData
