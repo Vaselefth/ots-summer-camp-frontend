@@ -4,6 +4,7 @@ import { Routes, RouterModule } from '@angular/router';
 import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
 import { ErrorPageComponent } from './error-page/error-page.component';
 import { ProductsListComponent } from './products-list/products-list.component';
+import { TransactorFormComponent } from './transactor-form/transactor-form.component';
 
 
 const appRoutes: Routes = [
@@ -11,7 +12,8 @@ const appRoutes: Routes = [
   { path: 'clientInvoice', component: ProductsListComponent },
   { path: 'supplierInvoice', component: ProductsListComponent },
   { path: 'searchInvoice', component: ProductsListComponent },
-  { path: 'transactors', component: ProductsListComponent },
+  { path: 'transactors', component: TransactorFormComponent },
+  { path: 'searchTransactor', component: TransactorFormComponent },
   { path: 'products', component: ProductsListComponent } ];
   /* { path: 'users', component: UsersComponent, children: [
     { path: ':id/:name', component: UserComponent }
