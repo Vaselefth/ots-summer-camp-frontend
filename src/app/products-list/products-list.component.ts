@@ -15,45 +15,60 @@ import {Router} from "@angular/router";
 export class ProductsListComponent implements OnInit {
   products: Observable<Product[]>;
 
-
-private productsTest: any = [];
+//private productsTest: any = [];
 //public pricePerItem: string = '';
 
 
   constructor(private http: HttpClient, private router: Router, private productService: ProductService) { 
   }
 
+
+  ngOnInit() {
+    this.reloadData();
+  }
+
+  reloadData() {
+    this.products = this.productService.getProductList();
+  
+  }
+
+
+
   private baseUrl = 'http://localhost:8080/api/productService';  
   
-  private getProductList() {  
+   private getProductList() {  
     this.http.get<any>(this.baseUrl).subscribe(response => {
-      //console.log(response);
-      this.productsTest = response;
-      //console.log(this.productsTest[1].pricePerItem);
+      console.log(response);
+     // this.productsTest = response;
+     // console.log(this.productsTest[1].pricePerItem);
       return response;
     });  
-  }   
+  } 
 
-  // getProductList(){
-  //   this.httpClient.get<any>(this.baseUrl).subscribe(
-  //     response => {
-  //       console.log(response);
-  //       this.products = response;
-  //     }
-  //   );
-  // }
-
-  ngOnInit(): void {
-    
-  }
-
-  onSubmit(){
-    //this.productsTest = this.getProductList();
-  //this.products = this.getProductList();
-  }
-
- 
-
+    /*  getProductList(): Observable<any> {
+        return this.http.get(`${this.baseUrl}`);
+      
+    } 
+ */
   
 
-}
+ /*  getProductList(){
+    this.httpClient.get<any>(this.baseUrl).subscribe(
+      response => {
+        console.log(response);
+        this.products = response;
+      }
+    );
+ } */
+
+ 
+/*   onSubmit(){
+    //this.productsTest = this.getProductList();
+  //this.products = this.getProductList();
+  } */
+
+ 
+   }
+  
+
+
