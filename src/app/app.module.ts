@@ -5,6 +5,7 @@ import { HttpClientModule } from '@angular/common/http';
 
 import { AppComponent } from './app.component';
 import { TransactorFormComponent } from './transactor-form/transactor-form.component';
+import { TransactorFormService } from './transactor-form/transactor-form.service';
 
 @NgModule({
   declarations: [
@@ -16,7 +17,7 @@ import { TransactorFormComponent } from './transactor-form/transactor-form.compo
     FormsModule,
     HttpClientModule
   ],
-  providers: [],
+  providers: [TransactorFormService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

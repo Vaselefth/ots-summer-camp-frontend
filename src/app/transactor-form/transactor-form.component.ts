@@ -1,7 +1,8 @@
-import { HttpClient } from '@angular/common/http';
 import { Component, OnInit, ViewChild } from '@angular/core';
 import { NgForm } from '@angular/forms';
 import { Transactor } from '../transactor';
+import { TransactorFormService } from './transactor-form.service';
+import { HttpClient } from '@angular/common/http';
 
 @Component({
   selector: 'app-transactor-form',
@@ -13,27 +14,17 @@ export class TransactorFormComponent implements OnInit {
 
   cities = ['Αθήνα', 'Θεσσαλονίκη', 'Πάτρα','Ηράκλειο','Λάρισα','Βόλος','Ιωάννινα','Τρίκαλα','Χαλκίδα','Σέρρες'];
 
-  constructor(private http: HttpClient) { }
+  constructor(private transactorFormService: TransactorFormService, private http: HttpClient) { }
 
   ngOnInit(): void {
-  }
+  } 
 
   numberOnly(event): boolean {
-    const charCode = (event.which) ? event.which : event.keyCode;
-    if (charCode > 31 && (charCode < 48 || charCode > 57)) {
-      return false;
-    }
-    return true;
-
+    return this.transactorFormService.numberOnlyService(event);
   }
 
-  onCreatePost(postData: {transactor: Transactor}) {
-    this.http.post<Transactor>(
-      'http://localhost:8080/api/transactors', 
-      postData
-      ).subscribe(responseData => {
-          console.log(responseData);
-      });
+  postTransactor(postData: {transactor: Transactor}) {
+    this.transactorFormService.onCreatePost(postData);
   }
 
   onSubmit() {
@@ -46,7 +37,7 @@ export class TransactorFormComponent implements OnInit {
     transactor.abroad = Number(transactor.abroad);
     //true = 1 
     console.log(transactor);
-    this.onCreatePost(transactor);
+    this.postTransactor(transactor);
   }
 
 }
