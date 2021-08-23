@@ -3,6 +3,7 @@ import { Component, OnInit } from '@angular/core';
 import { Observable,Subject } from 'rxjs';
 import { ProductService } from '../product.service';
 import { Product } from '../product';
+import {Router} from "@angular/router";
 
 
 @Component({
@@ -12,13 +13,14 @@ import { Product } from '../product';
   providers: [ProductService]
 })
 export class ProductsListComponent implements OnInit {
+  products: Observable<Product[]>;
 
-private products: Product[] =[]; 
+
 private productsTest: any = [];
 //public pricePerItem: string = '';
 
 
-  constructor(private http: HttpClient) { 
+  constructor(private http: HttpClient, private router: Router, private productService: ProductService) { 
   }
 
   private baseUrl = 'http://localhost:8080/api/productService';  
@@ -46,7 +48,7 @@ private productsTest: any = [];
   }
 
   onSubmit(){
-    this.productsTest = this.getProductList();
+    //this.productsTest = this.getProductList();
   //this.products = this.getProductList();
   }
 
