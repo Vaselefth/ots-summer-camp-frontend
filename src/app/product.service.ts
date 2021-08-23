@@ -16,7 +16,7 @@ export class ProductService {
     return this.http.get(`${this.baseUrl}`);  
   }  
   
-  createProduct(product: object): Observable<object> {  
+ /*  createProduct(product: object): Observable<object> {  
     return this.http.post(`${this.baseUrl}`+'save-product', product);  
   }  
   
@@ -24,7 +24,7 @@ export class ProductService {
   deleteProduct(id: number): Observable<any> {  
     return this.http.delete(`${this.baseUrl}/delete-product/${id}`, { responseType: 'text' });  
   }  
-  
+   */
 
  
     

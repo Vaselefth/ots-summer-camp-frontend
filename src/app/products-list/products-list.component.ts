@@ -4,6 +4,7 @@ import { Observable,Subject } from 'rxjs';
 import { ProductService } from '../product.service';
 import { Product } from '../product';
 import {Router} from "@angular/router";
+import {map} from 'rxjs/operators'
 
 
 @Component({
@@ -37,10 +38,9 @@ export class ProductsListComponent implements OnInit {
   private baseUrl = 'http://localhost:8080/api/productService';  
   
    private getProductList() {  
-    this.http.get<any>(this.baseUrl).subscribe(response => {
+    this.http.get(this.baseUrl).subscribe(response => {
       console.log(response);
-     // this.productsTest = response;
-     // console.log(this.productsTest[1].pricePerItem);
+    
       return response;
     });  
   } 
