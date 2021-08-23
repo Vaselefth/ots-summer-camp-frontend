@@ -24,7 +24,8 @@ import { ProductService } from './product.service';
     FormsModule,  
     ReactiveFormsModule,  
     HttpClientModule,  
-    DataTablesModule  ],
+    DataTablesModule,
+    RouterModule  ],
   
   providers: [ProductService],
   bootstrap: [AppComponent]
