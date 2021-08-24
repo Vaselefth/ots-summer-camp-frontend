@@ -1,9 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
-import { Observable,Subject } from 'rxjs';
 import { ProductService } from '../product.service';
 import { Product } from '../product';
-import {Router} from "@angular/router";
 import {map} from 'rxjs/operators'
 
 
@@ -16,10 +14,7 @@ import {map} from 'rxjs/operators'
 export class ProductsListComponent implements OnInit {
   products:Product[] = []; 
 
-  //Observable<Product[]>;
-//private productsTest: any = [];
-//public pricePerItem: string = '';
-
+ 
 
   constructor(private http: HttpClient) { 
   }
@@ -36,14 +31,7 @@ export class ProductsListComponent implements OnInit {
   private baseUrl = 'http://localhost:8080/api/productService';  
   
    private fetchPosts() {  
-   /*  this.http.get(this.baseUrl).subscribe(response => {
-      console.log(response);
-    
-      return response;
-    });  
-  } 
- */
-
+  
   this.http
       .get<{ [key: string]: Product }>(this.baseUrl)
       .pipe(
@@ -63,36 +51,6 @@ export class ProductsListComponent implements OnInit {
       });
   }
 
-
-
-
-
-
-
-
-
-
-    /*  getProductList(): Observable<any> {
-        return this.http.get(`${this.baseUrl}`);
-      
-    } 
- */
-  
-
- /*  getProductList(){
-    this.httpClient.get<any>(this.baseUrl).subscribe(
-      response => {
-        console.log(response);
-        this.products = response;
-      }
-    );
- } */
-
- 
-/*   onSubmit(){
-    //this.productsTest = this.getProductList();
-  //this.products = this.getProductList();
-  } */
 
  
    }
