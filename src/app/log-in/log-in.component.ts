@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { NgForm } from '@angular/forms';
-import { AuthService } from '../auth.service';
+import { AuthService, AuthResponseData } from '../auth.service';
+import { Observable } from 'rxjs';
 
 @Component({
   selector: 'app-log-in',
@@ -14,6 +15,11 @@ export class LogInComponent {
   onSubmit(form: NgForm){
     const username = form.value.username;
     const password = form.value.password;
+
+    let authObs: Observable<AuthResponseData>;
+
+    authObs = this.authService.login(username, password);
+
     console.log(form.value);
     form.reset();
   }

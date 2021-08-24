@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http'
 
-interface AuthResponseData {
+export interface AuthResponseData {
   userId: bigint;
   username: string;
   password: string;
@@ -15,4 +15,16 @@ interface AuthResponseData {
 export class AuthService {
 
   constructor(private http: HttpClient) { }
+
+  login(username: string, password: string) {
+
+    return this.http.post<AuthResponseData>(
+
+      {
+        username: username,
+        password: password
+      }
+    )
+  }
+
 }
