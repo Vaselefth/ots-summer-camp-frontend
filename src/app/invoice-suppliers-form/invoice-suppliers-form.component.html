@@ -1,1 +1,150 @@
-<p>invoice-suppliers-form works!</p>
+`<!DOCTYPE html>
+<html>
+<head>
+<title>Invoice Form Customer</title>
+<link href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700" rel="stylesheet">
+<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.5.0/css/all.css" integrity="sha384-B4dIYHKNBt8Bc12p+WXckhzcICo0wtJAoU8YZTY5qE0Id1GSseTk6S+L3BlXeVIU" crossorigin="anonymous">
+
+</head>
+<body>
+
+
+
+    <div>
+        <label>
+        Yes or no?
+        <select>
+        <option value="">---</option>
+        <option value="">Yes</option>
+        <option value="">No</option>
+        </select>
+        </label>
+        </div>
+
+
+
+ <div class="testbox"> 
+
+
+
+
+
+<form (ngSubmit)="onSubmit()" #f="ngForm">
+<h1>Έκδοση Τιμολογίου</h1>
+
+
+<div
+id="user-data"
+ngModelGroup="userData"
+#userData="ngModelGroup">
+
+
+
+
+
+      
+
+
+<div class="form-group">
+    <p>Στοιχεία Φυσικού/Νομικού Εκπροσώπου</p>
+    <input
+    type="text"
+    id="firstName"
+    class="form-control"
+    ngModel
+    name="firstName"
+    required
+    #firstName="ngModel" placeholder="Όνομα">
+    <span class="help-block" *ngIf="!firstName.valid && firstName.touched">Το Όνομα είναι υποχρεωτικό πεδίο</span>
+</div>
+
+<div class="form-group">
+    <input
+    type="text"
+    id="lastName"
+    class="form-control"
+    ngModel
+    name="lastName"
+    required
+    #firstName="ngModel" placeholder="Επώνυμο">
+    <span class="help-block" *ngIf="!firstName.valid && firstName.touched">Το Επώνυμο είναι υποχρεωτικό πεδίο</span>
+</div>
+
+<div class="form-group">
+<p>Στοιχεία Επιχείρησης</p>
+<input
+    type="text"
+    id="companyName"
+    class="form-control"
+    ngModel
+    name="companyName"
+    required
+    #companyName="ngModel"  placeholder="Επωνυμία Επιχείρησης" />
+<span class="help-block" *ngIf="!companyName.valid && companyName.touched">Η Επωνυμία επιχείρησης είναι υποχρεωτικό πεδίο</span>
+<div class="companyDetails-item">
+   
+
+<input type="text" name="name"  placeholder="Α.Φ.Μ." />
+<input type="text" name="name" placeholder="Δ.Ο.Υ." />
+</div>
+</div>
+<div class="item">
+<p>Διεύθυνση</p>
+<input type="text" name="name" placeholder="Διεύθυνση"/>
+
+<div class="city-item">
+<input type="text" name="name" placeholder="Πόλη"/>
+<input type="text" name="name" placeholder="Ταχυδρομικός Κώδικας"/>
+</div>
+<select>
+<option value="">Χώρα</option>
+<option value="1">Ελλάδα</option>
+<option value="2">Γερμανία</option>
+<option value="3">Γαλλία</option>
+<option value="4">Αμερική</option>
+<option value="5">Αγγλία</option>
+</select>
+
+</div>
+<div class="item">
+<p>Στοιχεία Επικοινωνίας</p>
+<input type="text" name="name" placeholder="E-mail"/>
+<input type="text" name="name" placeholder="Τηλέφωνο Επικοινωνίας"/>
+</div>
+
+<div class="item">
+<p>Ημερομηνία Έκδοσης</p>
+<input type="date" name="name" required/>
+<i class="fas fa-calendar-alt"></i>
+</div>
+<div class="item">
+<p>Ώρα Έκδοσης</p>
+<input type="time" name="name" required/>
+<i class="fas fa-clock"></i>
+</div>
+<div class="item">
+<p>Τύπος Τιμολογίου</p>
+<select>
+<option value="">Παρακαλώ Επιλέξτε</option>
+<option value="1">Αγοράς - Πώλησης</option>
+<option value="2">Παροχής Υπηρεσιών</option>
+<option value="3">Πιστωτικό</option>
+</select>
+</div> 
+
+</div>
+<button
+class="btn btn-primary"
+type="submit"
+[disabled]="!f.valid">Submit</button>
+
+
+
+
+</form>
+
+
+
+ </div> 
+ </body> 
+ </html>` 

@@ -28,18 +28,18 @@ export class InvoiceSuppliersFormComponent implements OnInit {
   }
 
 
-  /* onSubmit() {
+   onSubmit() {
     
-    let transactor = this.signupForm.value.userData;
+    let invoice = this.signupForm.value.userData;
     
     //convert tin string to number
-    transactor.tin = Number(transactor.tin);    
+    /* transactor.tin = Number(transactor.tin);    
     transactor.transactorType = Number(transactor.transactorType);
-    transactor.abroad = Number(transactor.abroad);
+    transactor.abroad = Number(transactor.abroad); */
     //true = 1 
-    console.log(transactor);
-    this.postTransactor(transactor);
-  } */
+    console.log(invoice);
+    this.postInvoice(invoice);
+  } 
 
 }
 
