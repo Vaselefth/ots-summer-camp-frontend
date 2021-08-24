@@ -1,36 +1,36 @@
 import { Injectable } from '@angular/core';
-import { Transactor } from '../transactor';
 import { HttpClient } from '@angular/common/http';
-import { TRANSACTORS_API } from '../consts/api.constants';
+import { Invoice } from '../invoice';
 
 @Injectable({
   providedIn: 'root'
 })
-export class TransactorFormService {
+export class InvoiceSuppliersFormService {
+ baseUrl = 'http://localhost:8080/api/supplierInvoice';  
 
   constructor(private http: HttpClient) { }
 
-   numberOnlyService(event): boolean {
+  numberOnlyService(event): boolean {
     const charCode = (event.which) ? event.which : event.keyCode;
     if (charCode > 31 && (charCode < 48 || charCode > 57)) {
       return false;
     }
     return true;
-  } 
+  }
 
-  onCreatePost(postData: {transactor: Transactor}) {
-    this.http.post<Transactor>(
-      TRANSACTORS_API, 
+  onCreatePost(postData: {invoice: Invoice}) {
+    this.http.post<Invoice>(
+        this.baseUrl, 
       postData
       ).subscribe(
         (responseData) => {
           console.log(responseData);
-          alert("Το άνοιγμα νέας καρτέλας καταχωρήθηκε επιτυχώς");
+          alert("Το τιμολόγιο καταχωρήθηκε επιτυχώς");
       },
         (error) => {
           console.log(error);
           alert("Error - Ανεπιτυχής Καταχώρηση");
         }
       );
-  }
+  } 
 }
