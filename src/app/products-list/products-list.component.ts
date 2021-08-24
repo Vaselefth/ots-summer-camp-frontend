@@ -14,36 +14,63 @@ import {map} from 'rxjs/operators'
   providers: [ProductService]
 })
 export class ProductsListComponent implements OnInit {
-  products: Observable<Product[]>;
+  products:Product[] = []; 
 
+  //Observable<Product[]>;
 //private productsTest: any = [];
 //public pricePerItem: string = '';
 
 
-  constructor(private http: HttpClient, private router: Router, private productService: ProductService) { 
+  constructor(private http: HttpClient) { 
   }
 
 
   ngOnInit() {
-    this.reloadData();
+    this.fetchPosts();
+
   }
 
-  reloadData() {
-    this.products = this.productService.getProductList();
   
-  }
-
 
 
   private baseUrl = 'http://localhost:8080/api/productService';  
   
-   private getProductList() {  
-    this.http.get(this.baseUrl).subscribe(response => {
+   private fetchPosts() {  
+   /*  this.http.get(this.baseUrl).subscribe(response => {
       console.log(response);
     
       return response;
     });  
   } 
+ */
+
+  this.http
+      .get<{ [key: string]: Product }>(this.baseUrl)
+      .pipe(
+        map(responseData => {
+          const productArray: Product[] = [];
+          for (const key in responseData) {
+            if (responseData.hasOwnProperty(key)) {
+              productArray.push({ ...responseData[key], id: key });
+            }
+          }
+          return productArray;
+        })
+      )
+      .subscribe(posts => {
+        console.log(posts);
+        this.products = posts;
+      });
+  }
+
+
+
+
+
+
+
+
+
 
     /*  getProductList(): Observable<any> {
         return this.http.get(`${this.baseUrl}`);

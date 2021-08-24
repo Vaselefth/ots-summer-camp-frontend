@@ -1,31 +1,25 @@
 
-<!-- <button (click)="onSubmit()">ΛΙΣΤΑ ΠΡΟΙΟΝΤΩΝ</button> -->
-
 <div  class="panel panel-primary">
     <div  class="panel-heading">
       <h2>Προϊόντα</h2>
     </div>
     <div class="panel-body main">
-      <table class="table table-hover table-striped">
+      <table class="table table-hover table-striped">  
         <thead>
           <tr>
-            <th>id</th>
-            <th>name</th>
-            <th>price</th>
-            <th>discount </th>
-            <th>isproduct </th>
-            <th>vat </th>
+           
+            <th>Περιγραφή προϊόντος</th>
+            <th>Τιμή τεμαχίου (€)</th>
+            <th>Έκπτωση </th>
+            <th>ΦΠΑ</th>
           </tr>
         </thead>
         <tbody>
-            <tr *ngFor="let pr of products | async">
-                <td>{{pr.product_id}}</td>
-                <td>{{pr.product_name}}</td>
-                <td>{{pr.product_price_per_item}}</td>
-                <td>{{pr.product_discount}}</td>
-                <td>{{pr.product_service}}</td>
-                <td>{{pr.product_vat}}</td>
-                
+            <tr *ngFor="let pr of products">
+                 <td>{{pr.productDescription}}</td>
+                 <td>{{pr.pricePerItem}}</td>
+                <td>{{pr.discount}}</td>
+                <td>{{pr.vat.vatValue}}</td>
           </tr>
         </tbody>
       </table>
@@ -34,25 +28,8 @@
 
 
 
-<!-- <thread>
-    <tr>
-        <th>ID</th>
-        <th>Name</th>
-        <th>Price</th>
-    </tr>
-</thread> -->
 
 <!-- 
-<tr> {{ productsTest }} </tr> -->
-<!-- <tbody>
-    <tr *ngFor="let "
- </tbody>
-
-
-
-
-
-
 
     </table>
     <div class="panel-heading">  
@@ -91,4 +68,4 @@
     </div>  
     
      -->
-   
+  
