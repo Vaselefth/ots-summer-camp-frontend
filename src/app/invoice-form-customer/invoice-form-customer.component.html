@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <title>Invoice Form Customer</title>
+
+  <link href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700" rel="stylesheet">
+  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.5.0/css/all.css"
+    integrity="sha384-B4dIYHKNBt8Bc12p+WXckhzcICo0wtJAoU8YZTY5qE0Id1GSseTk6S+L3BlXeVIU" crossorigin="anonymous">
+
+
+</head>
+
+<body>
+
+  <div class="testbox">
+    <form action="/">
+      <h1>Έκδοση Τιμολογίου</h1>
+      <div class="item">
+        <p>Στοιχεία Φυσικού/Νομικού Εκπροσώπου</p>
+        <div class="name-item">
+          <input type="text" name="name" placeholder="Όνομα" />
+          <input type="text" name="name" placeholder="Επώνυμο" />
+        </div>
+      </div>
+      <div class="item">
+        <p>Στοιχεία Επιχείρησης</p>
+        <input type="text" name="name" placeholder="Επωνυμία Επιχείρησης" />
+        <div class="companyDetails-item">
+          <input type="text" name="name" placeholder="Α.Φ.Μ." />
+          <input type="text" name="name" placeholder="Δ.Ο.Υ." />
+        </div>
+      </div>
+      <div class="item">
+        <p>Διεύθυνση</p>
+        <input type="text" name="name" placeholder="Διεύθυνση" />
+
+        <div class="city-item">
+          <input type="text" name="name" placeholder="Πόλη" />
+          <input type="text" name="name" placeholder="Ταχυδρομικός Κώδικας" />
+        </div>
+        <select>
+          <option value="">Χώρα</option>
+          <option value="1">Ελλάδα</option>
+          <option value="2">Γερμανία</option>
+          <option value="3">Γαλλία</option>
+          <option value="4">Αμερική</option>
+          <option value="5">Αγγλία</option>
+        </select>
+
+      </div>
+      <div class="item">
+        <p>Στοιχεία Επικοινωνίας</p>
+        <input type="text" name="name" placeholder="E-mail" />
+        <input type="text" name="name" placeholder="Τηλέφωνο Επικοινωνίας" />
+      </div>
+
+      <div class="item">
+        <p>Ημερομηνία Έκδοσης</p>
+        <input type="date" name="name" required />
+        <i class="fas fa-calendar-alt"></i>
+      </div>
+      <div class="item">
+        <p>Ώρα Έκδοσης</p>
+        <input type="time" name="name" required />
+        <i class="fas fa-clock"></i>
+      </div>
+      <div class="item">
+        <p>Τύπος Τιμολογίου</p>
+        <select>
+          <option value="">Παρακαλώ Επιλέξτε</option>
+          <option value="1">Αγοράς - Πώλησης</option>
+          <option value="2">Παροχής Υπηρεσιών</option>
+          <option value="3">Πιστωτικό</option>
+        </select>
+      </div>
+
+
+
+
+
+      <div class="card">
+        <form [formGroup]="userForm">
+          <div class="mt-5">
+            <div class="form-row">
+              <div class="col-md-12">
+                <div class="form-group">
+                  <label > Name </label>
+                </div>
+                <div class="form-row">
+                    <div class="col">
+                      <input type="text" formControlName="name" class="form-control" placeholder="name">
+                    </div>
+                </div>
+              </div>
+              <div class="col-md-12">
+                <div class="form-group">
+                  <label > Adress </label>
+                </div>
+                <div class="form-row">
+                    <div class="col">
+                      <input type="text" formControlName="address" class="form-control" placeholder="adress">
+                    </div>
+                </div>
+              </div>
+              <div class="col-md-12">
+                <div class="form-group">
+                  <label > Contact No </label>
+                </div>
+                <div class="form-row">
+                    <div class="col">
+                      <input type="text" formControlName="ContactNo" class="form-control" placeholder="ContactNo">
+                    </div>
+                </div>
+              </div>
+              <div class="col-md-12">
+                <div class="form-group">
+                  <label > Gender </label>
+                </div>
+                <div class="form-row">
+                    <div class="col">
+                      <input type="text" formControlName="gender" class="form-control" placeholder="gender">
+                    </div>
+                </div>
+              </div>
+              <br>
+              <div class="form-row mt-4">
+                <div class="col-md-6">
+                  <button type="button" class="btn btn-primary" (click)="addItem()">Add</button> &nbsp; &nbsp; &nbsp;&nbsp; &nbsp; &nbsp;&nbsp; &nbsp; &nbsp;&nbsp;    &nbsp; &nbsp;
+                  <button type="button" class="btn btn-primary" (click)="reset()">reset</button>
+                </div>
+              </div>
+            </div>
+          </div>
+        </form>
+        <div class="col-md-8 mt-4 mb-4">
+          <table class="table table-bordered">
+            <thead>
+              <tr>
+                <th>Name</th>
+                <th>Address</th>
+                <th>Contact No</th>
+                <th>Gender</th>
+                <th>Action</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr *ngFor = "let item of listData">
+                <td>{{item.name}}</td>
+                <td>{{item.address}}</td>
+                <td>{{item.ContactNo}}</td>
+                <td>{{item.gender}}</td>
+                <td><button type="button" class="btn btn-primary" (click)="removeItems(item)">Remove</button></td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+
+
+
+
+
+
+
+
+
+
+    </form>
+  </div>
+</body>
+
+</html>

@@ -1,0 +1,204 @@
+<h1>Άνοιγμα Καρτέλας Πελάτη - Προμηθευτή</h1>
+<div class="container"> 
+    <div class="row">
+      <div class="col-xs-12 col-sm-10 col-md-8 col-sm-offset-1 col-md-offset-2">
+        <form (ngSubmit)="onSubmit()" #f="ngForm">
+          <div
+            id="user-data"
+            ngModelGroup="userData"
+            #userData="ngModelGroup">
+            <div class="form-group">
+              <label for="firstName">Όνομα</label>
+              <input
+                type="text"
+                id="firstName"
+                class="form-control"
+                ngModel
+                name="firstName"
+                required
+                #firstName="ngModel">
+                <span class="help-block" *ngIf="!firstName.valid && firstName.touched">Το Όνομα είναι υποχρεωτικό πεδίο</span>
+            </div>  
+
+            <div class="form-group">
+              <label for="lastName">Επίθετο</label>
+              <input
+                type="text"
+                id="lastName"
+                class="form-control"
+                ngModel
+                name="lastName"
+                required
+                #lastName="ngModel">
+                <span class="help-block" *ngIf="!lastName.valid && lastName.touched">Το Επίθετο είναι υποχρεωτικό πεδίο</span>
+            </div>
+
+            <div class="form-group">
+              <label for="companyName">Όνομα Εταιρείας</label>
+              <input
+                type="text"
+                id="companyName"
+                class="form-control"
+                ngModel
+                name="companyName">
+            </div>
+
+            <div class="form-group">
+            <label for="email">Email</label>
+            <input
+              type="email"
+              id="email"
+              class="form-control"
+              ngModel
+              name="email"
+              required
+              email
+              #email="ngModel">
+              <span class="help-block" *ngIf="!email.valid && email.touched">Το email δεν είναι έγκυρης μορφής</span>
+            </div>
+
+            <div class="form-group">
+            <label for="tin">Α.Φ.Μ</label>
+            <input
+              (keypress)="numberOnly($event)"
+              type="text"
+              id="tin"
+              class="form-control"
+              ngModel
+              name="tin"
+              required
+              #tin="ngModel"
+              minlength="9"
+              maxlength="9">
+              <span class="help-block" *ngIf="!tin.valid && tin.touched">Το ΑΦΜ δεν είναι έγκυρο, πρέπει να είναι Αριθμός 9 ψηφίων</span>
+          </div>
+
+          <div class="form-group">
+            <label for="doy">ΔΟΥ</label>
+            <input
+              type="text"
+              id="doy"
+              class="form-control"
+              ngModel
+              name="doy"
+              required>
+          </div>
+
+          <div class="form-group">
+            <label for="address">Διεύθυνση</label>
+            <input
+              type="text"
+              id="address"
+              class="form-control"
+              ngModel
+              name="address"
+              required
+              #address="ngModel">
+              <span class="help-block" *ngIf="!address.valid && address.touched">Η Διεύθυνση είναι υποχρεωτικό πεδίο</span>
+          </div>
+
+          <div class="form-group">
+            <label for="city">Πόλη</label>
+            <select
+              id="city"
+              class="form-control"
+              ngModel
+              name="city"
+              required
+              #city="ngModel">
+              <option *ngFor="let city of cities" [value]="city">{{city}}</option>
+            </select>
+            <span class="help-block" *ngIf="!city.valid && city.touched">Η Πόλη είναι υποχρεωτικό πεδίο</span>
+          </div>
+
+          <div class="form-group">
+            <label for="phoneNumber">Αριθμός Τηλεφώνου</label>
+            <input
+              (keypress)="numberOnly($event)"
+              type="text"
+              id="phoneNumber"
+              class="form-control"
+              ngModel
+              name="phoneNumber"
+              required
+              #phoneNumber="ngModel"
+              minlength="10"
+              maxlength="10">
+              <span class="help-block" *ngIf="!phoneNumber.valid && phoneNumber.touched">Ο αριθμός τηλεφώνου δεν είναι έγκυρος, πρέπει να είναι Αριθμός 10 ψηφίων</span>
+          </div>
+
+          <div class="form-group">
+          <label for="postalCode">Ταχυδρομικός Κώδικας</label>
+          <input
+            (keypress)="numberOnly($event)"
+            type="text"
+            id="postalCode"
+            class="form-control"
+            ngModel
+            name="postalCode"
+            required
+            #postalCode="ngModel"
+            minlength="5"
+            maxlength="5">
+            <span class="help-block" *ngIf="!postalCode.valid && postalCode.touched">Ο Ταχυδρομικός Κώδικας είναι υποχρεωτικό πεδίο και πρέπει να είναι Αριθμός 5 ψηφίων</span>
+          </div>
+
+          <div class="form-group">
+          <label for="transactorType">Είδος Συναλλασσόμενου</label>
+          <div class="radio">
+            <label>
+              <input
+                type="radio"
+                name="transactorType"
+                ngModel
+                value="0"
+                required>
+              Πελάτης
+            </label>
+            <br>
+            <label>
+              <input
+                type="radio"
+                name="transactorType"
+                ngModel
+                value="1"
+                required>
+              Προμηθευτής
+            </label>
+          </div>
+          </div>
+
+          <div class="form-group">
+            <label for="abroad">Πελάτης Εξωτερικού</label>
+            <div class="radio">
+              <label>
+                <input
+                  type="radio"
+                  name="abroad"
+                  ngModel
+                  value="0"
+                  required>
+                Ναι
+              </label>
+              <br>
+              <label>
+                <input
+                  type="radio"
+                  name="abroad"
+                  ngModel
+                  value="1"
+                  required>
+                Οχι
+              </label>
+            </div>
+            </div>
+
+      </div>
+          <button
+            class="btn btn-primary"
+            type="submit"
+            [disabled]="!f.valid">Submit</button>
+        </form>
+      </div>
+    </div>
+</div>
