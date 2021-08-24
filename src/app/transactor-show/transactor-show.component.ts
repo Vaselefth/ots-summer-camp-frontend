@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { TransactorShowService } from './transactor-show.service';
 import { Transactor } from '../transactor';
 
+
 @Component({
   selector: 'app-transactor-show',
   templateUrl: './transactor-show.component.html',
@@ -10,6 +11,7 @@ import { Transactor } from '../transactor';
 export class TransactorShowComponent implements OnInit {
 
   loadedTransactors: Transactor[] = [];
+  transactorOne = <Transactor>{};
 
   constructor(private transactorShowService: TransactorShowService) { }
 
@@ -20,12 +22,23 @@ export class TransactorShowComponent implements OnInit {
     return this.transactorShowService.numberOnlyService(event);
   }
 
-  getTransactors(): Transactor[] {
-    this.loadedTransactors = this.transactorShowService.onGetTransactors();
-    return this.loadedTransactors;
+  onClickDelete(id) {
+    let answer = confirm("Θέλετε σίγουρα να πραγματοποιήσετε διαγραφή του Συναλλασσόμενου??");
+    if(answer) {
+     this.transactorShowService.onDeleteTransactor(id);
+    }
+    else{
+      alert("Πήγαινε πίσω");
+    }
   }
 
-  onClickList() {
-    this.getTransactors();
+  onClickRecord(tin): Transactor {
+    this.transactorOne = this.transactorShowService.onGetTransactor(tin);
+    return this.transactorOne;
+  }
+
+  onClickList(): Transactor[] {
+    this.loadedTransactors = this.transactorShowService.onGetTransactors();
+    return this.loadedTransactors;
   }
 }
