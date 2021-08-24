@@ -11,14 +11,23 @@ import { HttpClientModule } from '@angular/common/http';
 import { ProductsListComponent } from './products-list/products-list.component';
 import { ProductService } from './product.service';
 import { TransactorFormService } from './transactor-form/transactor-form.service';
+<<<<<<< HEAD
 //import { InvoiceFormCustomerComponent } from './invoice-form-customer/invoice-form-customer.component';
+=======
+import { TransactorShowComponent } from './transactor-show/transactor-show.component';
+import { TransactorShowService } from './transactor-show/transactor-show.service';
+>>>>>>> origin/Vasilis-Branch
 
 @NgModule({
   declarations: [
     AppComponent,
     TransactorFormComponent,
+<<<<<<< HEAD
     ProductsListComponent,
     InvoiceFormCustomerComponent
+=======
+    TransactorShowComponent
+>>>>>>> origin/Vasilis-Branch
   ],
   imports: [
     BrowserModule,  
@@ -28,7 +37,11 @@ import { TransactorFormService } from './transactor-form/transactor-form.service
     HttpClientModule,
     RouterModule
   ],
+<<<<<<< HEAD
   providers: [ProductService,TransactorFormService],
+=======
+  providers: [TransactorFormService,TransactorShowService],
+>>>>>>> origin/Vasilis-Branch
   bootstrap: [AppComponent]
 })
 export class AppModule { }
