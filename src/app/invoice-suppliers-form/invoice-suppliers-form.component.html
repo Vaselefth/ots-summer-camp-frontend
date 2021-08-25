@@ -191,12 +191,34 @@ ngModelGroup="userData"
 
 <div class="item">
 <p>Ημερομηνία Έκδοσης</p>
-<input type="date" name="name" required/>
+
+<input
+type="date"
+id="date"
+class="form-control"
+ngModel
+name="date"
+required
+date
+#date="ngModel">
+<span class="help-block" *ngIf="!date.valid && date.touched">Η ημερομηνία είναι υποχρεωτικό πεδίο</span>
+
 <i class="fas fa-calendar-alt"></i>
 </div>
 <div class="item">
 <p>Ώρα Έκδοσης</p>
-<input type="time" name="name" required/>
+
+
+<input
+type="time"
+id="time"
+class="form-control"
+ngModel
+name="time"
+time
+#time="ngModel">
+
+
 <i class="fas fa-clock"></i>
 </div>
 <div class="item">
