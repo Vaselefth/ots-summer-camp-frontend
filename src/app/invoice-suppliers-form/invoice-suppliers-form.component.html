@@ -9,7 +9,7 @@
 <body>
 
 
-
+<!-- 
     <div>
         <label>
         Yes or no?
@@ -19,7 +19,7 @@
         <option value="">No</option>
         </select>
         </label>
-        </div>
+        </div> -->
 
 
 
@@ -147,10 +147,8 @@ ngModelGroup="userData"
 <select>
 <option value="">Χώρα</option>
 <option value="1">Ελλάδα</option>
-<option value="2">Γερμανία</option>
-<option value="3">Γαλλία</option>
-<option value="4">Αμερική</option>
-<option value="5">Αγγλία</option>
+<option value="2">Εξωτερικό</option>
+
 </select>
 
 </div>
@@ -205,7 +203,7 @@ date
 
 <i class="fas fa-calendar-alt"></i>
 </div>
-<div class="item">
+<!-- <div class="item">
 <p>Ώρα Έκδοσης</p>
 
 
@@ -220,7 +218,7 @@ time
 
 
 <i class="fas fa-clock"></i>
-</div>
+</div> -->
 <div class="item">
 <p>Τύπος Τιμολογίου</p>
 
@@ -229,17 +227,17 @@ time
    
     <select
 
-    id="invoicetype"
+    id="invoiceType"
     class="form-control"
     ngModel
     name="invoicetype"
     required
-    #invoicetype="ngModel">
+    #invoiceType="ngModel">
 <option value="">Παρακαλώ Επιλέξτε</option>
 <option value="1">Αγοράς - Πώλησης</option>
 <option value="2">Παροχής Υπηρεσιών</option>
 <option value="3">Πιστωτικό</option>
-<span class="help-block" *ngIf="!invoicetype.valid && invoicetype.touched">Ο τύπος τιμολογίου είναι υποχρεωτικό πεδίο</span>
+<span class="help-block" *ngIf="!invoiceType.valid && invoiceType.touched">Ο τύπος τιμολογίου είναι υποχρεωτικό πεδίο</span>
 
 
 </select>
