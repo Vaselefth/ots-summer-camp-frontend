@@ -10,6 +10,11 @@ import { Observable } from 'rxjs';
 })
 export class LogInComponent {
 
+  myId: number;
+  myUsername: string;
+  myPassword: string;
+  myRole: string = "unauthorized";
+
   constructor(private authService: AuthService){}
 
   onSubmit(form: NgForm){
@@ -18,9 +23,20 @@ export class LogInComponent {
 
     let authObs: Observable<AuthResponseData>;
 
-    authObs = this.authService.login(username, password);
+    this.authService.login(username, password).subscribe(response=>{
+      if(response !== null){
+        this.myId = response.id
+        this.myUsername = response.username
+        this.myPassword = response.password
+        this.myRole = response.role
+        console.log(response.role)
+      }
+    });
 
     console.log(form.value);
+
+    console.log(this.myRole);
+
     form.reset();
   }
 }
