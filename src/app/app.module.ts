@@ -11,6 +11,8 @@ import { HttpClientModule } from '@angular/common/http';
 import { ProductsListComponent } from './products-list/products-list.component';
 import { ProductService } from './product.service';
 import { TransactorFormService } from './transactor-form/transactor-form.service';
+import { TransactorShowComponent } from './transactor-show/transactor-show.component';
+import { TransactorShowService } from './transactor-show/transactor-show.service';
 import { InvoiceSuppliersFormComponent } from './invoice-suppliers-form/invoice-suppliers-form.component';
 
 @NgModule({
@@ -18,6 +20,7 @@ import { InvoiceSuppliersFormComponent } from './invoice-suppliers-form/invoice-
     AppComponent,
     TransactorFormComponent,
     ProductsListComponent,
+    TransactorShowComponent,
     InvoiceSuppliersFormComponent
   ],
   imports: [
@@ -28,7 +31,7 @@ import { InvoiceSuppliersFormComponent } from './invoice-suppliers-form/invoice-
     HttpClientModule,
     RouterModule
   ],
-  providers: [ProductService,TransactorFormService],
+  providers: [ProductService,TransactorFormService,TransactorShowService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

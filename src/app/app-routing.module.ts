@@ -5,6 +5,7 @@ import { PageNotFoundComponent } from './page-not-found/page-not-found.component
 import { ErrorPageComponent } from './error-page/error-page.component';
 import { ProductsListComponent } from './products-list/products-list.component';
 import { TransactorFormComponent } from './transactor-form/transactor-form.component';
+import { TransactorShowComponent } from './transactor-show/transactor-show.component';
 
 
 const appRoutes: Routes = [
@@ -13,7 +14,7 @@ const appRoutes: Routes = [
   { path: 'supplierInvoice', component: InvoiceSuppliersFormComponent },
   { path: 'searchInvoice', component: ProductsListComponent },
   { path: 'transactors', component: TransactorFormComponent },
-  { path: 'searchTransactor', component: TransactorFormComponent },
+  { path: 'searchTransactor', component: TransactorShowComponent },
   { path: 'products', component: ProductsListComponent } ];
   /* { path: 'users', component: UsersComponent, children: [
     { path: ':id/:name', component: UserComponent }
