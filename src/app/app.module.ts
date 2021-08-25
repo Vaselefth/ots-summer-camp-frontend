@@ -18,7 +18,7 @@ import { TransactorShowService } from './transactor-show/transactor-show.service
   imports: [
     BrowserModule,
     FormsModule,
-    HttpClientModule
+    HttpClientModule,
   ],
   providers: [TransactorFormService,TransactorShowService],
   bootstrap: [AppComponent]

@@ -12,6 +12,7 @@ export class TransactorShowComponent implements OnInit {
 
   loadedTransactors: Transactor[] = [];
   transactorOne = <Transactor>{};
+  isShow = false;
 
   constructor(private transactorShowService: TransactorShowService) { }
 
@@ -20,6 +21,11 @@ export class TransactorShowComponent implements OnInit {
 
   numberOnly(event): boolean {
     return this.transactorShowService.numberOnlyService(event);
+  }
+
+  onClickUpdate(id) {
+    console.log(id);
+    this.isShow = !this.isShow;
   }
 
   onClickDelete(id) {
