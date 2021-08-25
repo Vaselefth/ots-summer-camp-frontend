@@ -13,13 +13,15 @@ import { ProductService } from './product.service';
 import { TransactorFormService } from './transactor-form/transactor-form.service';
 import { TransactorShowComponent } from './transactor-show/transactor-show.component';
 import { TransactorShowService } from './transactor-show/transactor-show.service';
+import { InvoiceSuppliersFormComponent } from './invoice-suppliers-form/invoice-suppliers-form.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     TransactorFormComponent,
     ProductsListComponent,
-    TransactorShowComponent
+    TransactorShowComponent,
+    InvoiceSuppliersFormComponent
   ],
   imports: [
     BrowserModule,  
