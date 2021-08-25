@@ -2,11 +2,14 @@ import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Invoice } from '../invoice';
 
+
 @Injectable({
   providedIn: 'root'
 })
 export class InvoiceSuppliersFormService {
- baseUrl = 'http://localhost:8080/api/supplierInvoice';  
+ baseUrl = 'http://localhost:8080/api/productService';  
+
+
 
   constructor(private http: HttpClient) { }
 
@@ -33,4 +36,6 @@ export class InvoiceSuppliersFormService {
         }
       );
   } 
+
+  
 }

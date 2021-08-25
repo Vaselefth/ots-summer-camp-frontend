@@ -226,8 +226,11 @@ type="submit"
           </div>
           <div class="form-row">
               <div class="col">
-                <input type="text" formControlName="name" class="form-control" placeholder="name">
-              </div>
+                
+                <p> dsajdhasjdhask
+                  dsajdhasjdhaskas
+                </p>
+              </div>  
           </div>
         </div>
 
@@ -265,11 +268,11 @@ type="submit"
         </tr>
       </thead>
       <tbody>
-        <tr *ngFor = "let item of listData">
-          <td>{{item.name}}</td>
-          <td>{{item.address}}</td>
-          <td>{{item.ContactNo}}</td>
-          <td>{{item.gender}}</td>
+        <tr *ngFor = "let product of loadedProducts">
+          <td>{{product.name}}</td>
+          <td>{{product.address}}</td>
+          <td>{{product.ContactNo}}</td>
+          <td>{{product.gender}}</td>
           <td><button type="button" class="btn btn-primary" (click)="removeItems(item)">Remove</button></td>
         </tr>
       </tbody>
@@ -282,6 +285,14 @@ type="submit"
 
 
  </div> 
+
+ <div>
+  <select>
+    <option *ngFor="let player of loadedProducts" [value]="player.product_name">
+        {{player.product_name}}
+    </option>
+</select>
+ </div>
  </body> 
  </html>
 

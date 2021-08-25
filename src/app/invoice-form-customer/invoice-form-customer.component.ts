@@ -4,6 +4,7 @@ import { Invoice } from '../invoice';
 import { InvoiceSuppliersFormService } from './invoice-form-customer.service';
 import { HttpClient } from '@angular/common/http';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { Product } from '../product';
 
 @Component({
   selector: 'app-invoice-form-customer',
@@ -12,6 +13,8 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 })
 
 export class InvoiceFormCustomerComponent implements OnInit {
+
+  loadedProducts: Product[] = [];
 
   userForm: FormGroup
   listData: any[];
@@ -33,7 +36,8 @@ export class InvoiceFormCustomerComponent implements OnInit {
     })
   }
   ngOnInit(): void {
-    throw new Error('Method not implemented.');
+    //throw new Error('Method not implemented.');
+    this.loadedProducts = this.invoiceSuppliersFormService.onGetProducts();
   }
 
   numberOnly(event): boolean {

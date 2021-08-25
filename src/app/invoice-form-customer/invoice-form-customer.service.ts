@@ -1,12 +1,17 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Invoice } from '../invoice';
+import { Product } from '../product';
+import { map } from 'rxjs/operators';
 
 @Injectable({
   providedIn: 'root'
 })
 export class InvoiceSuppliersFormService {
- baseUrl = 'http://localhost:8080/api/supplierInvoice';  
+ baseUrl = 'http://localhost:8080/api/productService';  
+
+ loadedProducts: Product[] = [];
+
 
   constructor(private http: HttpClient) { }
 
@@ -32,5 +37,27 @@ export class InvoiceSuppliersFormService {
           alert("Error - Ανεπιτυχής Καταχώρηση");
         }
       );
-  } 
+  }
+
+  onGetProducts(): Product[] {
+    this.http.get<Product[]>(this.baseUrl)
+    .pipe(
+      map((responseData: Product[]) => {
+        this.loadedProducts = [...responseData];
+        return responseData;
+      }))
+    .subscribe(
+      (responseData) => {
+        console.log(responseData);
+        this.loadedProducts = responseData;
+      },
+      (error) => {
+        console.log(error);
+        alert("Error Loading - Απέτυχε η φόρτωση των επαφών!");
+        this.loadedProducts = [];
+      }
+    );
+    return this.loadedProducts;
+  }
+
 }
