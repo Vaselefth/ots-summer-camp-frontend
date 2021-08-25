@@ -21,7 +21,7 @@
       justify-content: center;
       align-items: center;
       height: inherit;
-      padding: 3px;
+      padding: 55px;
       }
       form {
       width: 100%;
@@ -39,7 +39,7 @@
       padding: 5px;
       }
       select {
-      width: 100%;
+      width: 99.5%;
       padding: 7px 0;
       background: transparent;
       }
@@ -78,6 +78,15 @@
       opacity: 0;
       cursor: pointer;
       }
+      
+      [type="time"]::-webkit-calendar-picker-indicator {
+        right: 0;
+        z-index: 2;
+        opacity: 0;
+        cursor: pointer;
+        }
+
+
       .btn-block {
       margin-top: 20px;
       text-align: center;
@@ -100,13 +109,7 @@
       background-color: #0666a3;
       }
       
-      .box{
-        width: 500%;
-        border: 1px solid rgb(145, 138, 138);
-        border-radius: 25px;
-        padding: 0px 20px 20px 20px;
-        margin-left: 400px;
-      }
+
 
 
 
@@ -121,6 +124,14 @@
       }
       .city-item select {
       width: calc(50% - 8px);
+      }
+
+      .box{
+        width: 500%;
+        border: 1px solid rgb(145, 138, 138);
+        border-radius: 25px;
+        padding: 0px 20px 20px 20px;
+        margin-left: 400px;
       }
 
 
