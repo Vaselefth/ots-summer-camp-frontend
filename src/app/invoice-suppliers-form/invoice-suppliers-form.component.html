@@ -239,6 +239,8 @@ time
 <option value="1">Αγοράς - Πώλησης</option>
 <option value="2">Παροχής Υπηρεσιών</option>
 <option value="3">Πιστωτικό</option>
+<span class="help-block" *ngIf="!invoicetype.valid && invoicetype.touched">Ο τύπος τιμολογίου είναι υποχρεωτικό πεδίο</span>
+
 
 </select>
 
