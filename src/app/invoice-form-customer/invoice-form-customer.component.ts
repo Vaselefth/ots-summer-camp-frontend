@@ -1,4 +1,8 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
+import { NgForm } from '@angular/forms';
+import { Invoice } from '../invoice';
+import { InvoiceSuppliersFormService } from './invoice-form-customer.service';
+import { HttpClient } from '@angular/common/http';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 
 @Component({
@@ -6,13 +10,16 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
   templateUrl: './invoice-form-customer.component.html',
   styleUrls: ['./invoice-form-customer.component.css']
 })
+
 export class InvoiceFormCustomerComponent implements OnInit {
 
   userForm: FormGroup
   listData: any[];
 
+  @ViewChild('f', { static: false }) signupForm: NgForm;
 
-  constructor(private fb:FormBuilder) { 
+
+  constructor(private fb:FormBuilder, private invoiceSuppliersFormService: InvoiceSuppliersFormService, private http: HttpClient) { 
 
     this.listData = [];
 
@@ -26,6 +33,15 @@ export class InvoiceFormCustomerComponent implements OnInit {
   ngOnInit(): void {
     throw new Error('Method not implemented.');
   }
+
+  numberOnly(event): boolean {
+    return this.invoiceSuppliersFormService.numberOnlyService(event);
+  }
+
+  postInvoice(postData: {invoice: Invoice}) {
+    this.invoiceSuppliersFormService.onCreatePost(postData);
+  }
+
   addItem(){
     this.listData.push(this.userForm.value);
     this.userForm.reset();
