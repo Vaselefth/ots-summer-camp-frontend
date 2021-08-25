@@ -25,7 +25,7 @@ import { InvoiceSuppliersFormComponent } from './invoice-suppliers-form/invoice-
     TransactorShowComponent,
     InvoiceFormCustomerComponent,
     ProductsListComponent,
-    TransactorShowComponent,
+    TransactorShowComponent,  
     InvoiceSuppliersFormComponent
   ],
   imports: [
