@@ -17,9 +17,11 @@ export class InvoiceFormCustomerComponent implements OnInit {
   listData: any[];
 
   @ViewChild('f', { static: false }) signupForm: NgForm;
+  cities = ['Αθήνα', 'Θεσσαλονίκη', 'Πάτρα','Ηράκλειο','Λάρισα','Βόλος','Ιωάννινα','Τρίκαλα','Χαλκίδα','Σέρρες'];
 
 
   constructor(private fb:FormBuilder, private invoiceSuppliersFormService: InvoiceSuppliersFormService, private http: HttpClient) { 
+
 
     this.listData = [];
 
@@ -41,6 +43,19 @@ export class InvoiceFormCustomerComponent implements OnInit {
   postInvoice(postData: {invoice: Invoice}) {
     this.invoiceSuppliersFormService.onCreatePost(postData);
   }
+
+  onSubmit() {
+    
+    let invoice = this.signupForm.value.userData;
+    
+    //convert tin string to number
+    /* transactor.tin = Number(transactor.tin);    
+    transactor.transactorType = Number(transactor.transactorType);
+    transactor.abroad = Number(transactor.abroad); */
+    //true = 1 
+    console.log(invoice);
+    this.postInvoice(invoice);
+  } 
 
   addItem(){
     this.listData.push(this.userForm.value);

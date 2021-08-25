@@ -1,8 +1,10 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { RouterModule } from '@angular/router';
+import { BrowserAnimationsModule } from "@angular/platform-browser/animations";
 import { TransactorFormComponent } from './transactor-form/transactor-form.component';
 import { AppRoutingModule } from './app-routing.module';
+
 
 import { AppComponent } from './app.component';  
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';  
@@ -24,11 +26,14 @@ import { InvoiceFormCustomerComponent } from './invoice-form-customer/invoice-fo
   ],
   imports: [
     BrowserModule,  
+    BrowserAnimationsModule,
+
     AppRoutingModule,  
     FormsModule,  
     ReactiveFormsModule,  
     HttpClientModule,
-    RouterModule
+    RouterModule,
+
   ],
   providers: [TransactorFormService,TransactorShowService],
   bootstrap: [AppComponent]
