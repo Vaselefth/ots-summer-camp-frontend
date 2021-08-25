@@ -1,17 +1,16 @@
-export class Transactor {
+export interface Transactor {
 
-    constructor(
-      public firstName: string,
-      public lastName: string,
-      public companyName: string,
-      public email: string,
-      public tin: number,
-      public doy: string,
-      public address: string,
-      public city: string,
-      public phoneNumber: string,
-      public postalCode: string,
-      public transactorType: boolean,
-      public abroad: boolean
-    ) {}
+      firstName: string,
+      lastName: string,
+      companyName: string,
+      email: string,
+      tin: number,
+      doy: string,
+      address: string,
+      city: string,
+      phoneNumber: string,
+      postalCode: string,
+      transactorType: boolean,
+      abroad: boolean,
+      id?: string
 }

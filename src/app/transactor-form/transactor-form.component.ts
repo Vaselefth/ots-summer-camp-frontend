@@ -2,7 +2,6 @@ import { Component, OnInit, ViewChild } from '@angular/core';
 import { NgForm } from '@angular/forms';
 import { Transactor } from '../transactor';
 import { TransactorFormService } from './transactor-form.service';
-import { HttpClient } from '@angular/common/http';
 
 @Component({
   selector: 'app-transactor-form',
@@ -14,7 +13,7 @@ export class TransactorFormComponent implements OnInit {
 
   cities = ['Αθήνα', 'Θεσσαλονίκη', 'Πάτρα','Ηράκλειο','Λάρισα','Βόλος','Ιωάννινα','Τρίκαλα','Χαλκίδα','Σέρρες'];
 
-  constructor(private transactorFormService: TransactorFormService, private http: HttpClient) { }
+  constructor(private transactorFormService: TransactorFormService) { }
 
   ngOnInit(): void {
   } 
@@ -24,7 +23,7 @@ export class TransactorFormComponent implements OnInit {
   }
 
   postTransactor(postData: {transactor: Transactor}) {
-    this.transactorFormService.onCreatePost(postData);
+    this.transactorFormService.onCreateTransactor(postData);
   }
 
   onSubmit() {

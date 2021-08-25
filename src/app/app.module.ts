@@ -11,12 +11,15 @@ import { HttpClientModule } from '@angular/common/http';
 import { ProductsListComponent } from './products-list/products-list.component';
 import { ProductService } from './product.service';
 import { TransactorFormService } from './transactor-form/transactor-form.service';
+import { TransactorShowComponent } from './transactor-show/transactor-show.component';
+import { TransactorShowService } from './transactor-show/transactor-show.service';
 
 @NgModule({
   declarations: [
     AppComponent,
     TransactorFormComponent,
-    ProductsListComponent
+    ProductsListComponent,
+    TransactorShowComponent
   ],
   imports: [
     BrowserModule,  
@@ -26,7 +29,7 @@ import { TransactorFormService } from './transactor-form/transactor-form.service
     HttpClientModule,
     RouterModule
   ],
-  providers: [ProductService,TransactorFormService],
+  providers: [ProductService,TransactorFormService,TransactorShowService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
