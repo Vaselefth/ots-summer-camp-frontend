@@ -30,7 +30,7 @@
 
 
 <form (ngSubmit)="onSubmit()" #f="ngForm">
-<h1>Έκδοση Τιμολογίου</h1>
+<h1>Έκχώρηση Τιμολογίου</h1>
 
 
 <div
@@ -78,9 +78,7 @@ ngModelGroup="userData"
     class="form-control"
     ngModel
     name="companyName"
-    required
     #companyName="ngModel"  placeholder="Επωνυμία Επιχείρησης" />
-<span class="help-block" *ngIf="!companyName.valid && companyName.touched">Η Επωνυμία επιχείρησης είναι υποχρεωτικό πεδίο</span>
 <div class="companyDetails-item">
    
 
