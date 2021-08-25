@@ -210,10 +210,7 @@ ngModelGroup="userData"
 </div>
 
 </div>
-<button
-class="btn btn-primary"
-type="submit"
-[disabled]="!f.valid">Submit</button>
+
 
 
 <div class="card">
@@ -226,10 +223,13 @@ type="submit"
           </div>
           <div class="form-row">
               <div class="col">
-                
-                <p> dsajdhasjdhask
-                  dsajdhasjdhaskas
-                </p>
+                <div>
+                  <select>
+                    <option *ngFor="let player of loadedProducts" [value]="player.productDescription">
+                        {{player.productDescription}}
+                    </option>
+                </select>
+                 </div>
               </div>  
           </div>
         </div>
@@ -240,12 +240,10 @@ type="submit"
           </div>
           <div class="form-row">
               <div class="col">
-                <input type="text" formControlName="address" class="form-control" placeholder="adress">
+                <input type="number" [(ngModel)]="quantity">
               </div>
           </div>
         </div>
-        
-        
         <br>
         <div class="form-row mt-4">
           <div class="col-md-6">
@@ -260,39 +258,35 @@ type="submit"
     <table class="table table-bordered">
       <thead>
         <tr>
-          <th>Name</th>
-          <th>Address</th>
-          <th>Contact No</th>
-          <th>Gender</th>
-          <th>Action</th>
+          <th>Προϊόν</th>
+          <th>Τιμή προϊόντος</th>
+          <th>Έκπτωση</th>
+          <th>ΦΠΑ</th>
+          <th>Ποσότητα</th>
+          <th>Συνολική Τιμή</th>
         </tr>
       </thead>
       <tbody>
         <tr *ngFor = "let product of loadedProducts">
-          <td>{{product.name}}</td>
-          <td>{{product.address}}</td>
-          <td>{{product.ContactNo}}</td>
-          <td>{{product.gender}}</td>
+          <td>{{product.productDescription}}</td>
+          <td>{{product.pricePerItem}}</td>
+          <td>{{product.discount}}</td>
+          <td>{{product.vat.vatValue}}</td>
+          <td>{{ quantity }}</td>  
+          <td>Keppo</td>
           <td><button type="button" class="btn btn-primary" (click)="removeItems(item)">Remove</button></td>
         </tr>
       </tbody>
     </table>
   </div>
 </div>
-
+<button
+class="btn btn-primary"
+type="submit"
+[disabled]="!f.valid">Submit</button>
 </form>
 
-
-
  </div> 
-
- <div>
-  <select>
-    <option *ngFor="let player of loadedProducts" [value]="player.product_name">
-        {{player.product_name}}
-    </option>
-</select>
- </div>
  </body> 
  </html>
 

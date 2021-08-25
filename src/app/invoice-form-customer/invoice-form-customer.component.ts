@@ -5,6 +5,7 @@ import { InvoiceSuppliersFormService } from './invoice-form-customer.service';
 import { HttpClient } from '@angular/common/http';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Product } from '../product';
+import { map } from 'rxjs/operators';
 
 @Component({
   selector: 'app-invoice-form-customer',
@@ -13,6 +14,10 @@ import { Product } from '../product';
 })
 
 export class InvoiceFormCustomerComponent implements OnInit {
+
+  baseUrl = 'http://localhost:8080/api/productService';  
+
+  quantity = "";
 
   loadedProducts: Product[] = [];
 
@@ -24,20 +29,11 @@ export class InvoiceFormCustomerComponent implements OnInit {
 
 
   constructor(private fb:FormBuilder, private invoiceSuppliersFormService: InvoiceSuppliersFormService, private http: HttpClient) { 
-
-
-    this.listData = [];
-
-    this.userForm = this.fb.group({
-      name : ['', Validators.required],
-      address : ['', Validators.required],
-      ContactNo: ['', Validators.required],
-      gender: ['', Validators.required]
-    })
   }
+  
   ngOnInit(): void {
     //throw new Error('Method not implemented.');
-    this.loadedProducts = this.invoiceSuppliersFormService.onGetProducts();
+    this.fetchPosts();
   }
 
   numberOnly(event): boolean {
@@ -76,7 +72,25 @@ export class InvoiceFormCustomerComponent implements OnInit {
       }
 
     });
+  }
 
-
+  private fetchPosts() {  
+    this.http
+      .get<{ [key: string]: Product }>(this.baseUrl)
+      .pipe(
+        map(responseData => {
+          const productArray: Product[] = [];
+          for (const key in responseData) {
+            if (responseData.hasOwnProperty(key)) {
+              productArray.push({ ...responseData[key], id: key });
+            }
+          }
+          return productArray;
+        })
+      )
+      .subscribe(posts => {
+        console.log(posts);
+        this.loadedProducts = posts;
+      });
   }
 }
