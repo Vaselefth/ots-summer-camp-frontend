@@ -12,7 +12,8 @@ import { HttpClient } from '@angular/common/http';
 export class InvoiceSuppliersFormComponent implements OnInit {
   
   @ViewChild('f', { static: false }) signupForm: NgForm;
- 
+  cities = ['Αθήνα', 'Θεσσαλονίκη', 'Πάτρα','Ηράκλειο','Λάρισα','Βόλος','Ιωάννινα','Τρίκαλα','Χαλκίδα','Σέρρες'];
+
   constructor(private invoiceSuppliersFormService: InvoiceSuppliersFormService, private http: HttpClient) { }
 
   ngOnInit(): void {

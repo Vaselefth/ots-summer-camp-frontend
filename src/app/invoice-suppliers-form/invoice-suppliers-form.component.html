@@ -24,11 +24,6 @@
 
 
  <div class="testbox"> 
-
-
-
-
-
 <form (ngSubmit)="onSubmit()" #f="ngForm">
 <h1>Έκδοση Τιμολογίου</h1>
 
@@ -37,13 +32,6 @@
 id="user-data"
 ngModelGroup="userData"
 #userData="ngModelGroup">
-
-
-
-
-
-      
-
 
 <div class="form-group">
     <p>Στοιχεία Φυσικού/Νομικού Εκπροσώπου</p>
@@ -78,24 +66,84 @@ ngModelGroup="userData"
     class="form-control"
     ngModel
     name="companyName"
-    required
     #companyName="ngModel"  placeholder="Επωνυμία Επιχείρησης" />
-<span class="help-block" *ngIf="!companyName.valid && companyName.touched">Η Επωνυμία επιχείρησης είναι υποχρεωτικό πεδίο</span>
 <div class="companyDetails-item">
-   
+    <div class="form-group">
+        <input
+          (keypress)="numberOnly($event)"
+          type="text"
+          id="tin"
+          class="form-control"
+          ngModel
+          name="tin"
+          required
+          #tin="ngModel"
+          minlength="9"
+          maxlength="9" placeholder="ΑΦΜ">
+          <span class="help-block" *ngIf="!tin.valid && tin.touched">Το ΑΦΜ δεν είναι έγκυρο, πρέπει να είναι Αριθμός 9 ψηφίων</span>
+      </div>
 
-<input type="text" name="name"  placeholder="Α.Φ.Μ." />
-<input type="text" name="name" placeholder="Δ.Ο.Υ." />
+      <div class="form-group">
+        <input
+          type="text"
+          id="doy"
+          class="form-control"
+          ngModel
+          name="doy"
+          required placeholder="ΔΟΥ">
+      </div>
 </div>
 </div>
+
 <div class="item">
 <p>Διεύθυνση</p>
-<input type="text" name="name" placeholder="Διεύθυνση"/>
 
-<div class="city-item">
-<input type="text" name="name" placeholder="Πόλη"/>
-<input type="text" name="name" placeholder="Ταχυδρομικός Κώδικας"/>
-</div>
+<div class="form-group">
+    <input
+      type="text"
+      id="address"
+      class="form-control"
+      ngModel
+      name="address"
+      required
+      #address="ngModel" placeholder="Διεύθυνση"/>
+      <span class="help-block" *ngIf="!address.valid && address.touched">Η Διεύθυνση είναι υποχρεωτικό πεδίο</span>
+  </div>
+
+
+
+    <div class="form-group">
+        <p>Πόλη</p>
+        <select
+          id="city"
+          class="form-control"
+          ngModel
+          name="city"
+          required
+          #city="ngModel" placeholder="Πόλη">
+          <option *ngFor="let city of cities" [value]="city">{{city}}</option>
+        </select>
+        <span class="help-block" *ngIf="!city.valid && city.touched">Η Πόλη είναι υποχρεωτικό πεδίο</span>
+      </div> 
+
+      <div class="form-group">
+        <p>Ταχυδρομικός Κώδικας</p>
+        <input
+          (keypress)="numberOnly($event)"
+          type="text"
+          id="postalCode"
+          class="form-control"
+          ngModel
+          name="postalCode"
+          required
+          #postalCode="ngModel"
+          minlength="5"
+          maxlength="5" placeholder="Ταχυδρομικός κώδικας">
+          <span class="help-block" *ngIf="!postalCode.valid && postalCode.touched">Ο Ταχυδρομικός Κώδικας είναι υποχρεωτικό πεδίο και πρέπει να είναι Αριθμός 5 ψηφίων</span>
+        </div>
+
+       
+
 <select>
 <option value="">Χώρα</option>
 <option value="1">Ελλάδα</option>
@@ -106,10 +154,39 @@ ngModelGroup="userData"
 </select>
 
 </div>
+
 <div class="item">
 <p>Στοιχεία Επικοινωνίας</p>
-<input type="text" name="name" placeholder="E-mail"/>
-<input type="text" name="name" placeholder="Τηλέφωνο Επικοινωνίας"/>
+<div class="form-group">
+
+    <input
+      type="email"
+      id="email"
+      class="form-control"
+      ngModel
+      name="email"
+      required
+      email
+      #email="ngModel" placeholder="E-mail">
+      <span class="help-block" *ngIf="!email.valid && email.touched">Το email δεν είναι έγκυρης μορφής</span>
+    </div>
+
+    <div class="form-group">
+     
+        <input
+          (keypress)="numberOnly($event)"
+          type="text"
+          id="phoneNumber"
+          class="form-control"
+          ngModel
+          name="phoneNumber"
+          required
+          #phoneNumber="ngModel"
+          minlength="10"
+          maxlength="10" placeholder="Αριθμός τηλεφώνου">
+          <span class="help-block" *ngIf="!phoneNumber.valid && phoneNumber.touched">Ο αριθμός τηλεφώνου δεν είναι έγκυρος, πρέπει να είναι Αριθμός 10 ψηφίων</span>
+      </div>
+
 </div>
 
 <div class="item">
@@ -124,6 +201,22 @@ ngModelGroup="userData"
 </div>
 <div class="item">
 <p>Τύπος Τιμολογίου</p>
+
+
+<div class="form-group">
+   
+    <input
+    type="text"
+    id="invoicetype"
+    class="form-control"
+    ngModel
+    name="invoicetype"
+    required
+    #firstName="ngModel" placeholder="Τύπος τιμολογίου">
+
+
+
+
 <select>
 <option value="">Παρακαλώ Επιλέξτε</option>
 <option value="1">Αγοράς - Πώλησης</option>
@@ -131,6 +224,8 @@ ngModelGroup="userData"
 <option value="3">Πιστωτικό</option>
 </select>
 </div> 
+
+</div>
 
 </div>
 <button
