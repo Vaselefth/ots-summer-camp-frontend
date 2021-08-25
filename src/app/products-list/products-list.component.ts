@@ -1,9 +1,8 @@
 import { HttpClient } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
-import { Observable,Subject } from 'rxjs';
 import { ProductService } from '../product.service';
 import { Product } from '../product';
-import {Router} from "@angular/router";
+import {map} from 'rxjs/operators'
 
 
 @Component({
@@ -13,47 +12,48 @@ import {Router} from "@angular/router";
   providers: [ProductService]
 })
 export class ProductsListComponent implements OnInit {
-  products: Observable<Product[]>;
+  products:Product[] = []; 
 
-
-private productsTest: any = [];
-//public pricePerItem: string = '';
-
+ 
 
   constructor(private http: HttpClient, private router: Router, private productService: ProductService) { 
   }
 
+
+  ngOnInit() {
+    this.fetchPosts();
+
+  }
+
+  
+
+
   private baseUrl = 'http://localhost:8080/api/productService';  
   
-  private getProductList() {  
-    this.http.get<any>(this.baseUrl).subscribe(response => {
-      //console.log(response);
-      this.productsTest = response;
-      //console.log(this.productsTest[1].pricePerItem);
-      return response;
-    });  
-  }   
-
-  // getProductList(){
-  //   this.httpClient.get<any>(this.baseUrl).subscribe(
-  //     response => {
-  //       console.log(response);
-  //       this.products = response;
-  //     }
-  //   );
-  // }
-
-  ngOnInit(): void {
-    
+   private fetchPosts() {  
+  
+  this.http
+      .get<{ [key: string]: Product }>(this.baseUrl)
+      .pipe(
+        map(responseData => {
+          const productArray: Product[] = [];
+          for (const key in responseData) {
+            if (responseData.hasOwnProperty(key)) {
+              productArray.push({ ...responseData[key], id: key });
+            }
+          }
+          return productArray;
+        })
+      )
+      .subscribe(posts => {
+        console.log(posts);
+        this.products = posts;
+      });
   }
 
-  onSubmit(){
-    //this.productsTest = this.getProductList();
-  //this.products = this.getProductList();
-  }
 
  
-
+   }
   
 
-}
+

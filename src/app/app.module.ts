@@ -10,24 +10,25 @@ import { HttpClientModule } from '@angular/common/http';
 //import {DataTablesModule} from 'angular-datatables';  
 import { ProductsListComponent } from './products-list/products-list.component';
 import { ProductService } from './product.service';
+import { TransactorFormService } from './transactor-form/transactor-form.service';
+import { InvoiceSuppliersFormComponent } from './invoice-suppliers-form/invoice-suppliers-form.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     TransactorFormComponent,
-    ProductsListComponent
- 
+    ProductsListComponent,
+    InvoiceSuppliersFormComponent
   ],
   imports: [
     BrowserModule,  
     AppRoutingModule,  
     FormsModule,  
     ReactiveFormsModule,  
-    HttpClientModule,  
-    //DataTablesModule 
-   ],
-  
-  providers: [ProductService],
+    HttpClientModule,
+    RouterModule
+  ],
+  providers: [ProductService,TransactorFormService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
