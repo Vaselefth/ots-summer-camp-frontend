@@ -1,40 +1,115 @@
-<h1>Λίστα Επαφών Πελατών-Προμηθευτών</h1>
-<button
-    (click)="onClickList()"
-    class="btn btn-primary pull-left"
-    type="button">Εμφάνιση όλων των επαφών
-</button>
-<br>
-<br>
-<br>    
 <div>
-    <b>Ευρέση Συναλλασσόμενου με βάση το </b> 
-    <label for="tin">Α.Φ.Μ:</label>&nbsp;
-    <input
-        (keypress)="numberOnly($event)"
-        size="10"
-        type="text"
-        id="tin"
-        ngModel
-        name="tin"
-        required
-        #tin="ngModel"
-        minlength="9"
-        maxlength="9">&nbsp;    
-    <span class="help-block" *ngIf="!tin.valid && tin.touched">Το ΑΦΜ δεν είναι έγκυρο, πρέπει να είναι Αριθμός 9 ψηφίων</span>
-    <button     
-    class="btn btn-primary"
-    type="button">Εμφάνιση Συναλλασσόμενου  
-</button>
+    <h1>Λίστα Επαφών Πελατών-Προμηθευτών</h1>
+    <button
+        (click)="onClickList()"
+        class="btn btn-primary pull-left"
+        type="button">Εμφάνιση όλων των επαφών
+    </button>
+    <br>
+    <br>
+    <br>    
+    <div> 
+        <b>Ευρέση Συναλλασσόμενου με βάση το </b> 
+        <label for="tin">Α.Φ.Μ:</label>&nbsp;
+        <input
+            (keypress)="numberOnly($event)"
+            size="10"
+            type="text"
+            id="tin"   
+            ngModel
+            name="tin"
+            required
+            #tin="ngModel"  
+            minlength="9"
+            maxlength="9">&nbsp;
+        <span class="help-block" *ngIf="!tin.valid && tin.touched">Το ΑΦΜ δεν είναι έγκυρο, πρέπει να είναι Αριθμός 9 ψηφίων</span>
+        <button
+        (click)="onClickRecord(tin.value)"
+        class="btn btn-primary"
+        type="button">Εμφάνιση Συναλλασσόμενου  
+    </button>
+    </div>
+    <br>
+    <div class="panel panel-primary" *ngIf="(transactorOne | json) != '{}'">
+        <div class="panel-heading">
+            <h2>Συναλλασσόμενος</h2>
+        </div>
+        <div class="panel-body main">
+          <table class="table table-hover table-striped">
+            <thead>
+              <tr>
+                <th scope="col">Όνομα</th>
+                <th scope="col">Επίθετο</th>
+                <th scope="col">Πόλη</th>
+                <th scope="col">Οδός</th>
+                <th scope="col">Τ.Κ</th>
+                <th scope="col">Τηλέφωνο</th>
+                <th scope="col">Α.Φ.Μ</th>
+              </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>{{ transactorOne.firstName }}</td>
+                    <td>{{ transactorOne.lastName }}</td>
+                    <td>{{ transactorOne.city }}</td>
+                    <td>{{ transactorOne.address }}</td>
+                    <td>{{ transactorOne.postalCode }}</td>
+                    <td>{{ transactorOne.phoneNumber }}</td>
+                    <td>{{ transactorOne.tin }}</td>
+                    <td><button 
+                        (click)="onClickUpdate(transactorOne.id)"    
+                        class="btn btn-success"
+                        type="button">Ενημέρωση στοιχείων  
+                    </button></td>
+                    <td><button     
+                        (click)="onClickDelete(transactorOne.id)"
+                        class="btn btn-danger"
+                        type="button">Διαγραφή Συναλλασσόμενου
+                    </button></td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+    </div>
+    <div class="panel panel-primary" *ngIf="loadedTransactors.length >=1">
+        <div class="panel-heading">
+            <h2>Συναλλασσόμενοι</h2>
+        </div>
+        <div class="panel-body main">
+          <table class="table table-hover table-striped">
+            <thead>
+              <tr>
+                <th scope="col">Όνομα</th>
+                <th scope="col">Επίθετο</th>
+                <th scope="col">Πόλη</th>
+                <th scope="col">Οδός</th>
+                <th scope="col">Τ.Κ</th>
+                <th scope="col">Τηλέφωνο</th>
+                <th scope="col">Α.Φ.Μ</th>
+              </tr>
+            </thead>
+            <tbody>
+                <tr *ngFor="let transactor of loadedTransactors">
+                    <td>{{ transactor.firstName }}</td>
+                    <td>{{ transactor.lastName }}</td>
+                    <td>{{ transactor.city }}</td>
+                    <td>{{ transactor.address }}</td>
+                    <td>{{ transactor.postalCode }}</td>
+                    <td>{{ transactor.phoneNumber }}</td>
+                    <td>{{ transactor.tin }}</td>
+                    <td><button 
+                        (click)="onClickUpdate(transactor.id)"    
+                        class="btn btn-success"
+                        type="button">Ενημέρωση στοιχείων  
+                    </button></td>
+                    <td><button     
+                        (click)="onClickDelete(transactor.id)"
+                        class="btn btn-danger"
+                        type="button">Διαγραφή Συναλλασσόμενου
+                    </button></td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+    </div>
 </div>
-<br>
-<div class="row">
-        <ul class="list-group" *ngIf="loadedTransactors.length >=1">
-            <li class="list-group-item" *ngFor="let transactor of loadedTransactors">   
-                <span>{{ transactor.city }}</span>
-                <span>{{ transactor.tin}}</span>
-             </li>  
-         </ul>
-</div>
-
-

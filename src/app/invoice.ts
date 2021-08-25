@@ -3,3 +3,4 @@ export interface Invoice {
     product_name:String;
    
 }
+

@@ -4,6 +4,10 @@ h1 {
     padding-bottom: 3%;
 }
 
+h2 {
+    text-align: center;
+}
+
 input.ng-invalid.ng-touched {
     border: 1px solid red;
 }

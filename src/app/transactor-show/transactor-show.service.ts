@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Transactor } from '../transactor';
 import { TRANSACTORS_API } from '../consts/api.constants';
+import { TRANSACTORS_API_TIN } from '../consts/api.constants';
 import { map } from 'rxjs/operators';
 
 @Injectable({
@@ -10,6 +11,7 @@ import { map } from 'rxjs/operators';
 export class TransactorShowService {
 
   loadedTransactors: Transactor[] = [];
+  transactor = <Transactor>{};
 
   constructor(private http: HttpClient) { }
 
@@ -21,19 +23,46 @@ export class TransactorShowService {
     return true;
   }
 
-  onGetTransactors(): Transactor[] {
-    this.http.get<{ [key: string]: Transactor}>(
-      TRANSACTORS_API
-    ).pipe(
-      map(responseData=> {
-      const transactorsArray = [];
-      for(let key in responseData) {
-        if(responseData.hasOwnProperty(key)) {
-          transactorsArray.push({ ...responseData[key], id: key});
-        }
+  refresh(): void {
+    window.location.reload();
+  } 
+
+  onDeleteTransactor(id) {
+    id = Number(id);
+    const url = `${TRANSACTORS_API}/${id}`;
+    this.http.delete(url)
+    .subscribe();
+    this.refresh(); 
+  }
+
+  onGetTransactor(tin): Transactor {
+    tin = Number(tin);
+    const url = `${TRANSACTORS_API_TIN}/${tin}`;
+    this.http.get<Transactor>(url)
+    .pipe(
+      map((responseData: Transactor) => {
+        this.transactor = responseData;
+        return responseData;
+      }))
+    .subscribe(
+      (responseData) => {
+        this.transactor = responseData;
+      },(error) => {
+        console.log(error);
+        alert("Error Loading - Απέτυχε η φόρτωση των επαφών!");
+        this.transactor = null;
       }
-      return transactorsArray;
-    }))
+    );
+    return this.transactor;
+  }
+
+  onGetTransactors(): Transactor[] {
+    this.http.get<Transactor[]>(TRANSACTORS_API)
+    .pipe(
+      map((responseData: Transactor[]) => {
+        this.loadedTransactors = [...responseData];
+        return responseData;
+      }))
     .subscribe(
       (responseData) => {
         console.log(responseData);
@@ -41,7 +70,7 @@ export class TransactorShowService {
       },
       (error) => {
         console.log(error);
-        alert("Error loading");
+        alert("Error Loading - Απέτυχε η φόρτωση των επαφών!");
         this.loadedTransactors = [];
       }
     );
