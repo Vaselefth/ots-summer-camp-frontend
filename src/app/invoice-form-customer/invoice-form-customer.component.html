@@ -70,74 +70,6 @@
             placeholder="ΑΦΜ">
             <span class="help-block" *ngIf="!tin.valid && tin.touched">Το ΑΦΜ δεν είναι έγκυρο, πρέπει να είναι Αριθμός 9 ψηφίων</span>
         </div>
-       
-
-        <select>
-          <option value="">Χώρα</option>
-          <option value="1">Ελλάδα</option>
-          <option value="2">Εξωτερικό</option>
-          </select>
-
-</div>
-
-<div class="item">
-<p>Στοιχεία Επικοινωνίας</p>
-<div class="form-group">
-
-    <input
-      type="email"
-      id="email"
-      class="form-control"
-      ngModel
-      name="email"
-      required
-      email
-      #email="ngModel" placeholder="E-mail">
-      <span class="help-block" *ngIf="!email.valid && email.touched">Το email δεν είναι έγκυρης μορφής</span>
-    </div>
-
-    <div class="form-group">
-     
-        <input
-          (keypress)="numberOnly($event)"
-          type="text"
-          id="phoneNumber"
-          class="form-control"
-          ngModel
-          name="phoneNumber"
-          required
-          #phoneNumber="ngModel"
-          minlength="10"
-          maxlength="10" placeholder="Αριθμός τηλεφώνου">
-          <span class="help-block" *ngIf="!phoneNumber.valid && phoneNumber.touched">Ο αριθμός τηλεφώνου δεν είναι έγκυρος, πρέπει να είναι Αριθμός 10 ψηφίων</span>
-      </div>
-
-</div>
-
-<div class="item">
-<p>Ημερομηνία Έκδοσης</p>
-
-<input
-type="date"
-id="date"
-class="form-control"
-ngModel
-name="date"
-required
-date
-#date="ngModel">
-<span class="help-block" *ngIf="!date.valid && date.touched">Η ημερομηνία είναι υποχρεωτικό πεδίο</span>
-
-<i class="fas fa-calendar-alt"></i>
-</div>
-
-<div class="item">
-<p>Ώρα Έκδοσης</p>
-<input type="time" name="name"/>
-<i class="fas fa-clock"></i>
-</div>
-<div class="item">
-  <p>Τύπος Τιμολογίου</p>
 
         <div class="form-group">
             <input
@@ -163,25 +95,6 @@ date
             #address="ngModel" placeholder="Διεύθυνση"/>
             <span class="help-block" *ngIf="!address.valid && address.touched">Η Διεύθυνση είναι υποχρεωτικό πεδίο</span>
         </div>
-  <div class="form-group">
-     
-      <select
-  
-      id="invoicetype"
-      class="form-control"
-      ngModel
-      name="invoicetype"
-      required
-      #invoicetype="ngModel">
-  <option value="">Παρακαλώ Επιλέξτε</option>
-  <option value="1">Αγοράς - Πώλησης</option>
-  <option value="2">Παροχής Υπηρεσιών</option>
-  <option value="3">Πιστωτικό</option>
-  <span class="help-block" *ngIf="!invoicetype.valid && invoicetype.touched">Ο τύπος τιμολογίου είναι υποχρεωτικό πεδίο</span>
-
-  
-  </select>
-</div> 
 
         <div class="form-group">
             <p>Πόλη</p>
