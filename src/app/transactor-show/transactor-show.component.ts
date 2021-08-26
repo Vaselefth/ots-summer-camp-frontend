@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { TransactorShowService } from './transactor-show.service';
 import { Transactor } from '../transactor';
+import { AuthService } from '../auth.service';
 
 
 @Component({
@@ -14,7 +15,8 @@ export class TransactorShowComponent implements OnInit {
   transactorOne = <Transactor>{};
   isShow = false;
 
-  constructor(private transactorShowService: TransactorShowService) { }
+  constructor(private transactorShowService: TransactorShowService, 
+    private authService: AuthService) { }
 
   ngOnInit(): void {
   }
@@ -46,5 +48,9 @@ export class TransactorShowComponent implements OnInit {
   onClickList(): Transactor[] {
     this.loadedTransactors = this.transactorShowService.onGetTransactors();
     return this.loadedTransactors;
+  }
+
+  onLogout(){
+    this.authService.logout();
   }
 }

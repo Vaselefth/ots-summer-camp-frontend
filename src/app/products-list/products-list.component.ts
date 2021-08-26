@@ -4,6 +4,7 @@ import { ProductService } from '../product.service';
 import { Product } from '../product';
 import {map} from 'rxjs/operators';
 import { Router } from '@angular/router';
+import { AuthService } from '../auth.service';
 
 
 @Component({
@@ -17,7 +18,8 @@ export class ProductsListComponent implements OnInit {
 
  
 
-  constructor(private http: HttpClient, private router: Router, private productService: ProductService) { 
+  constructor(private http: HttpClient, private router: Router, private productService: ProductService, 
+    private authService: AuthService) { 
   }
 
 
@@ -50,6 +52,10 @@ export class ProductsListComponent implements OnInit {
         console.log(posts);
         this.products = posts;
       });
+  }
+
+  onLogout(){
+    this.authService.logout();
   }
 }
   

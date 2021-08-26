@@ -1,5 +1,6 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
 import { NgForm } from '@angular/forms';
+import { AuthService } from '../auth.service';
 import { Transactor } from '../transactor';
 import { TransactorFormService } from './transactor-form.service';
 
@@ -13,7 +14,8 @@ export class TransactorFormComponent implements OnInit {
 
   cities = ['Αθήνα', 'Θεσσαλονίκη', 'Πάτρα','Ηράκλειο','Λάρισα','Βόλος','Ιωάννινα','Τρίκαλα','Χαλκίδα','Σέρρες'];
 
-  constructor(private transactorFormService: TransactorFormService) { }
+  constructor(private transactorFormService: TransactorFormService, 
+    private authService: AuthService) { }
 
   ngOnInit(): void {
   } 
@@ -37,6 +39,10 @@ export class TransactorFormComponent implements OnInit {
     //true = 1 
     console.log(transactor);
     this.postTransactor(transactor);
+  }
+
+  onLogout(){
+    this.authService.logout();
   }
 
 }

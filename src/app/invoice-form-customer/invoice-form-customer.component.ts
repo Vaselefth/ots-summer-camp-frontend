@@ -6,6 +6,7 @@ import { HttpClient } from '@angular/common/http';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Product } from '../product';
 import { map } from 'rxjs/operators';
+import { AuthService } from '../auth.service';
 
 @Component({
   selector: 'app-invoice-form-customer',
@@ -34,7 +35,7 @@ export class InvoiceFormCustomerComponent implements OnInit {
   cities = ['Αθήνα', 'Θεσσαλονίκη', 'Πάτρα','Ηράκλειο','Λάρισα','Βόλος','Ιωάννινα','Τρίκαλα','Χαλκίδα','Σέρρες'];
 
 
-  constructor(private invoiceSuppliersFormService: InvoiceSuppliersFormService, private http: HttpClient) { 
+  constructor(private invoiceSuppliersFormService: InvoiceSuppliersFormService, private http: HttpClient, private authService: AuthService) { 
   }
   
   ngOnInit(): void {
@@ -106,5 +107,9 @@ export class InvoiceFormCustomerComponent implements OnInit {
         console.log(posts);
         this.loadedProducts = posts;
       });
+  }
+
+  onLogout(){
+    this.authService.logout();
   }
 }
