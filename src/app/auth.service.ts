@@ -3,6 +3,7 @@ import { HttpClient } from '@angular/common/http'
 import { Subject } from 'rxjs';
 import { User } from './log-in/user.model';
 import { tap } from 'rxjs/operators';
+import { Router } from '@angular/router';
 
 export interface AuthResponseData {
   id: number;
@@ -20,7 +21,7 @@ export class AuthService {
 
   private baseUrl = 'http://localhost:8080/api/users/auth'; 
 
-  constructor(private http: HttpClient) { }
+  constructor(private http: HttpClient, private router: Router) { }
 
   login(username: string, password: string) {
 
@@ -43,6 +44,11 @@ export class AuthService {
       } 
       })
     );
+  }
+
+  logout(){
+
+    this.router.navigate(['/']);
   }
 
 }
