@@ -25,10 +25,10 @@ export class InvoiceFormCustomerComponent implements OnInit {
   productVat=0;
   totalValue: number = 0;
 
-  loadedProducts: Product[] = [];
+  productToAdd = {};
+  addedProducts = [];
 
-  userForm: FormGroup
-  listData: any[];
+  loadedProducts: Product[] = [];
 
   @ViewChild('f', { static: false }) signupForm: NgForm;
   cities = ['Αθήνα', 'Θεσσαλονίκη', 'Πάτρα','Ηράκλειο','Λάρισα','Βόλος','Ιωάννινα','Τρίκαλα','Χαλκίδα','Σέρρες'];
@@ -49,6 +49,15 @@ export class InvoiceFormCustomerComponent implements OnInit {
     this.invoiceSuppliersFormService.onCreatePost(postData);
   }
 
+  onRemove(name:string) {
+    for(let i = 0; i < this.addedProducts.length; ++i) {
+      if (this.addedProducts[i].name === name) {
+          this.addedProducts.splice(i,1);
+      }
+    }
+    console.log(this.addedProducts);
+  }
+
   onAdd() {
     let product = this.signupForm.value.userData;
     this.quantity = product.quantity;
@@ -60,8 +69,10 @@ export class InvoiceFormCustomerComponent implements OnInit {
         this.productDiscount=p.discount;
         this.productVat=p.vat.vatValue;
         this.totalValue = Number(((p.pricePerItem - (p.discount * p.pricePerItem) + (p.pricePerItem * p.vat.vatValue)) * Number(this.quantity)).toFixed(2));
+        this.productToAdd = {name:this.productName, price: this.productPrice, discount:this.productDiscount, vat:this.productVat, total: this.totalValue};
     }
   }
+  this.addedProducts.push(this.productToAdd);
 }
 
   onSubmit() {
@@ -74,26 +85,8 @@ export class InvoiceFormCustomerComponent implements OnInit {
     transactor.abroad = Number(transactor.abroad); */
     //true = 1 
     console.log(invoice);
-    this.postInvoice(invoice);
+    this.postInvoice(invoice);  
   } 
-
-  addItem() {
-    this.listData.push(this.userForm.value);
-    this.userForm.reset();
-  }
-
-  reset(){
-    this.userForm.reset();
-  }
-
-  removeItems(element:any){
-    this.listData.forEach((value:any,dex:any) => {
-      if(value == element){
-        this.listData.splice(dex,1)
-      }
-
-    });
-  }
 
   private fetchPosts() {  
     this.http
