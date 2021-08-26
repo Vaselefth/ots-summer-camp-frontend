@@ -7,6 +7,7 @@ import { ProductsListComponent } from './products-list/products-list.component';
 import { TransactorFormComponent } from './transactor-form/transactor-form.component';
 
 
+
 const appRoutes: Routes = [
   { path: '', component: ProductsListComponent },
   { path: 'clientInvoice', component: ProductsListComponent },

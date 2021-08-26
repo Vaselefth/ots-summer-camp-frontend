@@ -16,13 +16,15 @@ import { TransactorFormService } from './transactor-form/transactor-form.service
 import { TransactorShowComponent } from './transactor-show/transactor-show.component';
 import { TransactorShowService } from './transactor-show/transactor-show.service';
 import { InvoiceFormCustomerComponent } from './invoice-form-customer/invoice-form-customer.component';
+import { InvoiceTemplateComponent } from './invoice-template/invoice-template.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     TransactorFormComponent,
     TransactorShowComponent,
-    InvoiceFormCustomerComponent
+    InvoiceFormCustomerComponent,
+    InvoiceTemplateComponent
   ],
   imports: [
     BrowserModule,  
