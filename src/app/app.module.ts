@@ -5,10 +5,11 @@ import { BrowserAnimationsModule } from "@angular/platform-browser/animations";
 import { TransactorFormComponent } from './transactor-form/transactor-form.component';
 import { AppRoutingModule } from './app-routing.module';
 
-
+import { LogInComponent } from './log-in/log-in.component';
+import { HttpClient } from '@angular/common/http';
+import { HttpClientModule } from '@angular/common/http';
 import { AppComponent } from './app.component';  
-import { FormsModule, ReactiveFormsModule } from '@angular/forms';  
-import { HttpClientModule } from '@angular/common/http';  
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';   
 //import {DataTablesModule} from 'angular-datatables';  
 import { ProductsListComponent } from './products-list/products-list.component';
 import { ProductService } from './product.service';
@@ -17,6 +18,7 @@ import { TransactorShowComponent } from './transactor-show/transactor-show.compo
 import { TransactorShowService } from './transactor-show/transactor-show.service';
 import { InvoiceFormCustomerComponent } from './invoice-form-customer/invoice-form-customer.component';
 import { InvoiceSuppliersFormComponent } from './invoice-suppliers-form/invoice-suppliers-form.component';
+import { MenuComponent } from './menu/menu.component';
 
 @NgModule({
   declarations: [
@@ -26,7 +28,9 @@ import { InvoiceSuppliersFormComponent } from './invoice-suppliers-form/invoice-
     InvoiceFormCustomerComponent,
     ProductsListComponent,
     TransactorShowComponent,  
-    InvoiceSuppliersFormComponent
+    InvoiceSuppliersFormComponent,
+    LogInComponent,
+    MenuComponent
   ],
   imports: [
     BrowserModule,  
@@ -39,7 +43,7 @@ import { InvoiceSuppliersFormComponent } from './invoice-suppliers-form/invoice-
     RouterModule,
 
   ],
-  providers: [ProductService,TransactorFormService,TransactorShowService],
+  providers: [ProductService,TransactorFormService,TransactorShowService,HttpClient],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
