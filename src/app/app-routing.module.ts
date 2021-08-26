@@ -7,17 +7,19 @@ import { ProductsListComponent } from './products-list/products-list.component';
 import { TransactorFormComponent } from './transactor-form/transactor-form.component';
 import { TransactorShowComponent } from './transactor-show/transactor-show.component';
 import { InvoiceFormCustomerComponent } from './invoice-form-customer/invoice-form-customer.component';
-
+import { MenuComponent } from './menu/menu.component';
+import { LogInComponent } from './log-in/log-in.component';
 
 
 const appRoutes: Routes = [
-  { path: '', component: ProductsListComponent },
-  { path: 'clientInvoice', component: InvoiceFormCustomerComponent },
-  { path: 'supplierInvoice', component: InvoiceSuppliersFormComponent },
-  { path: 'searchInvoice', component: ProductsListComponent },
-  { path: 'transactors', component: TransactorFormComponent },
-  { path: 'searchTransactor', component: TransactorShowComponent },
-  { path: 'products', component: ProductsListComponent } ];
+  { path: '', component: LogInComponent },
+  {path: 'menu',  component: MenuComponent },
+  { path: 'menu/clientInvoice', component: InvoiceFormCustomerComponent },
+  { path: 'menu/supplierInvoice', component: InvoiceSuppliersFormComponent },
+  { path: 'menu/searchInvoice', component: ProductsListComponent },
+  { path: 'menu/transactors', component: TransactorFormComponent },
+  { path: 'menu/searchTransactor', component: TransactorShowComponent },
+  { path: 'menu/products', component: ProductsListComponent } ];
   /* { path: 'users', component: UsersComponent, children: [
     { path: ':id/:name', component: UserComponent }
   ] },

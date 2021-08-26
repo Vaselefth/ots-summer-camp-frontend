@@ -18,6 +18,7 @@ import { TransactorShowComponent } from './transactor-show/transactor-show.compo
 import { TransactorShowService } from './transactor-show/transactor-show.service';
 import { InvoiceFormCustomerComponent } from './invoice-form-customer/invoice-form-customer.component';
 import { InvoiceSuppliersFormComponent } from './invoice-suppliers-form/invoice-suppliers-form.component';
+import { MenuComponent } from './menu/menu.component';
 
 @NgModule({
   declarations: [
@@ -28,7 +29,8 @@ import { InvoiceSuppliersFormComponent } from './invoice-suppliers-form/invoice-
     ProductsListComponent,
     TransactorShowComponent,  
     InvoiceSuppliersFormComponent,
-    LogInComponent
+    LogInComponent,
+    MenuComponent
   ],
   imports: [
     BrowserModule,  

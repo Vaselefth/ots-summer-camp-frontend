@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { NgForm } from '@angular/forms';
 import { AuthService, AuthResponseData } from '../auth.service';
-import { Observable } from 'rxjs';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-log-in',
@@ -10,33 +10,21 @@ import { Observable } from 'rxjs';
 })
 export class LogInComponent {
 
-  myId: number;
-  myUsername: string;
-  myPassword: string;
-  myRole: string = "unauthorized";
-
-  constructor(private authService: AuthService){}
+  constructor(private authService: AuthService,private router: Router){}
 
   onSubmit(form: NgForm){
     const username = form.value.username;
     const password = form.value.password;
 
-    //let authObs: Observable<AuthResponseData>;
-
     this.authService.login(username, password).subscribe(response=>{
       if(response !== null){
-        this.myId = response.id
-        this.myUsername = response.username
-        this.myPassword = response.password
-        this.myRole = response.role
-        console.log(response)
-        
+        //console.log(response)
+        this.router.navigate(['/menu']);
+      }
+      else{
+        alert("Λανθασμένα στοιχεία χρήστη");
       }
     });
-
-    console.log(form.value);
-
-    console.log(this.myRole);
 
     form.reset();
   }

@@ -31,6 +31,8 @@ export class AuthService {
         password: password
       }
     ).pipe(tap(resData =>{
+
+      if(resData !== null){
         const user = new User(
           resData.id, 
           resData.username, 
@@ -38,6 +40,7 @@ export class AuthService {
           resData.role
         );
         this.user.next(user);  
+      } 
       })
     );
   }
