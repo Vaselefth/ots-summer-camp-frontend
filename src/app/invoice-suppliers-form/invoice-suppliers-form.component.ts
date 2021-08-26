@@ -4,6 +4,7 @@ import { Invoice } from '../invoice';
 import { InvoiceSuppliersFormService } from './invoice-suppliers-form.service';
 import { HttpClient } from '@angular/common/http';
 import { Product } from '../product';
+import { AuthService } from '../auth.service';
 
 @Component({
   selector: 'app-invoice-suppliers-form',
@@ -16,7 +17,7 @@ export class InvoiceSuppliersFormComponent implements OnInit {
   @ViewChild('f', { static: false }) signupForm: NgForm;
   cities = ['Αθήνα', 'Θεσσαλονίκη', 'Πάτρα','Ηράκλειο','Λάρισα','Βόλος','Ιωάννινα','Τρίκαλα','Χαλκίδα','Σέρρες'];
 
-  constructor(private invoiceSuppliersFormService: InvoiceSuppliersFormService, private http: HttpClient) { }
+  constructor(private invoiceSuppliersFormService: InvoiceSuppliersFormService, private http: HttpClient, private authService: AuthService) { }
 
   ngOnInit(): void {
     
@@ -44,6 +45,10 @@ export class InvoiceSuppliersFormComponent implements OnInit {
     console.log(invoice);
     this.postInvoice(invoice);
   } 
+
+  onLogout(){
+    this.authService.logout();
+  }
 
 }
 
