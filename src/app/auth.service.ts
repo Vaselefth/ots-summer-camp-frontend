@@ -1,5 +1,8 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http'
+import { Subject } from 'rxjs';
+import { User } from './log-in/user.model';
+import { tap } from 'rxjs/operators';
 
 export interface AuthResponseData {
   id: number;
@@ -13,6 +16,8 @@ export interface AuthResponseData {
 })
 export class AuthService {
 
+  user = new Subject<User>();
+
   private baseUrl = 'http://localhost:8080/api/users/auth'; 
 
   constructor(private http: HttpClient) { }
@@ -25,6 +30,15 @@ export class AuthService {
         username: username,
         password: password
       }
+    ).pipe(tap(resData =>{
+        const user = new User(
+          resData.id, 
+          resData.username, 
+          resData.password, 
+          resData.role
+        );
+        this.user.next(user);  
+      })
     );
   }
 
