@@ -1,6 +1,14 @@
+
+ .box{
+  width: 101%;
+ 
+  padding: 0px 10px 200px 30px;
+  margin-left: 0px;
+  }
+
 html, body {
   min-height: 100%;
-  }
+}
   
   body, div, form, input, select, p {
   padding: 0;
@@ -125,13 +133,7 @@ html, body {
   width: calc(50% - 8px);
   }
   
-  .box{
-  width: 500%;
-  border: 1px solid rgb(145, 138, 138);
-  border-radius: 25px;
-  padding: 0px 20px 20px 20px;
-  margin-left: 400px;
-  }
+ 
   
   
   

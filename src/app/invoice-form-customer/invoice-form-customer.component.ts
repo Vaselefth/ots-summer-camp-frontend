@@ -17,7 +17,13 @@ export class InvoiceFormCustomerComponent implements OnInit {
 
   baseUrl = 'http://localhost:8080/api/productService';  
 
-  quantity = "";
+  quantity="";
+  tempProduct="";
+  productName="";
+  productPrice=0;
+  productDiscount=0;
+  productVat=0;
+  totalValue: number = 0;
 
   loadedProducts: Product[] = [];
 
@@ -28,11 +34,10 @@ export class InvoiceFormCustomerComponent implements OnInit {
   cities = ['Αθήνα', 'Θεσσαλονίκη', 'Πάτρα','Ηράκλειο','Λάρισα','Βόλος','Ιωάννινα','Τρίκαλα','Χαλκίδα','Σέρρες'];
 
 
-  constructor(private fb:FormBuilder, private invoiceSuppliersFormService: InvoiceSuppliersFormService, private http: HttpClient) { 
+  constructor(private invoiceSuppliersFormService: InvoiceSuppliersFormService, private http: HttpClient) { 
   }
   
   ngOnInit(): void {
-    //throw new Error('Method not implemented.');
     this.fetchPosts();
   }
 
@@ -44,8 +49,23 @@ export class InvoiceFormCustomerComponent implements OnInit {
     this.invoiceSuppliersFormService.onCreatePost(postData);
   }
 
+  onAdd() {
+    let product = this.signupForm.value.userData;
+    this.quantity = product.quantity;
+    this.tempProduct = product.product;
+    for(let p of this.loadedProducts) {
+      if(this.tempProduct === p.productDescription) {
+        this.productName = p.productDescription;
+        this.productPrice=p.pricePerItem;
+        this.productDiscount=p.discount;
+        this.productVat=p.vat.vatValue;
+        this.totalValue = Number(((p.pricePerItem - (p.discount * p.pricePerItem) + (p.pricePerItem * p.vat.vatValue)) * Number(this.quantity)).toFixed(2));
+    }
+  }
+}
+
   onSubmit() {
-    
+
     let invoice = this.signupForm.value.userData;
     
     //convert tin string to number
@@ -57,10 +77,11 @@ export class InvoiceFormCustomerComponent implements OnInit {
     this.postInvoice(invoice);
   } 
 
-  addItem(){
+  addItem() {
     this.listData.push(this.userForm.value);
     this.userForm.reset();
   }
+
   reset(){
     this.userForm.reset();
   }
