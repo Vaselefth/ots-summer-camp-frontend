@@ -49,6 +49,15 @@ export class InvoiceFormCustomerComponent implements OnInit {
     this.invoiceSuppliersFormService.onCreatePost(postData);
   }
 
+  onRemove(name:string) {
+    for(let i = 0; i < this.addedProducts.length; ++i) {
+      if (this.addedProducts[i].name === name) {
+          this.addedProducts.splice(i,1);
+      }
+    }
+    console.log(this.addedProducts);
+  }
+
   onAdd() {
     let product = this.signupForm.value.userData;
     this.quantity = product.quantity;

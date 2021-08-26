@@ -244,6 +244,11 @@
           <td>{{p.vat}}</td>  
           <td>{{quantity}}</td>
           <td>{{p.total}}</td>
+          <td><button
+            type="button"
+            (click)="onRemove(p.name)">
+            Remove</button>
+        </td>
         </tr>
       </tbody>
     </table>
