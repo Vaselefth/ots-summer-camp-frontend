@@ -3,6 +3,7 @@ import { NgForm } from '@angular/forms';
 import { Invoice } from '../invoice';
 import { InvoiceSuppliersFormService } from './invoice-suppliers-form.service';
 import { HttpClient } from '@angular/common/http';
+import { Product } from '../product';
 
 @Component({
   selector: 'app-invoice-suppliers-form',
@@ -10,6 +11,7 @@ import { HttpClient } from '@angular/common/http';
   styleUrls: ['./invoice-suppliers-form.component.css']
 })
 export class InvoiceSuppliersFormComponent implements OnInit {
+
   
   @ViewChild('f', { static: false }) signupForm: NgForm;
   cities = ['Αθήνα', 'Θεσσαλονίκη', 'Πάτρα','Ηράκλειο','Λάρισα','Βόλος','Ιωάννινα','Τρίκαλα','Χαλκίδα','Σέρρες'];
@@ -17,6 +19,7 @@ export class InvoiceSuppliersFormComponent implements OnInit {
   constructor(private invoiceSuppliersFormService: InvoiceSuppliersFormService, private http: HttpClient) { }
 
   ngOnInit(): void {
+    
   }
 
 

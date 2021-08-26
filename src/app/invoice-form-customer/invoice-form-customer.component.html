@@ -1,4 +1,4 @@
-`<!DOCTYPE html>
+<!DOCTYPE html>
 <html>
 <head>
 <title>Invoice Form Customer</title>
@@ -9,26 +9,9 @@
 <body>
 
 
-<<<<<<< HEAD
-<!-- 
-    <div>
-        <label>
-        Yes or no?
-        <select>
-        <option value="">---</option>
-        <option value="">Yes</option>
-        <option value="">No</option>
-        </select>
-        </label>
-        </div> -->
-
-
-
-=======
->>>>>>> master
  <div class="testbox"> 
 <form (ngSubmit)="onSubmit()" #f="ngForm">
-<h1>Έκχώρηση Τιμολογίου Προμηθευτή</h1>
+<h1>Έκδοση Τιμολογίου</h1>
 
 
 <div
@@ -147,15 +130,11 @@ ngModelGroup="userData"
 
        
 
-<select>
-<option value="">Χώρα</option>
-<option value="1">Ελλάδα</option>
-<option value="2">Εξωτερικό</option>
-<<<<<<< HEAD
-
-=======
->>>>>>> master
-</select>
+        <select>
+          <option value="">Χώρα</option>
+          <option value="1">Ελλάδα</option>
+          <option value="2">Εξωτερικό</option>
+          </select>
 
 </div>
 
@@ -209,176 +188,130 @@ date
 
 <i class="fas fa-calendar-alt"></i>
 </div>
-<<<<<<< HEAD
-<!-- <div class="item">
+
+<div class="item">
 <p>Ώρα Έκδοσης</p>
-
-
-<input
-type="time"
-id="time"
-class="form-control"
-ngModel
-name="time"
-time
-#time="ngModel">
-=======
->>>>>>> master
-
-<div class="item">
-  <p>Ώρα Έκδοσης</p>
-  <input type="time" name="name"/>
-  <i class="fas fa-clock"></i>
-  </div>
-
-<<<<<<< HEAD
+<input type="time" name="name"/>
 <i class="fas fa-clock"></i>
-</div> -->
-=======
->>>>>>> master
+</div>
 <div class="item">
-<p>Τύπος Τιμολογίου</p>
+  <p>Τύπος Τιμολογίου</p>
 
 
-<div class="form-group">
-   
-    <select
+  <div class="form-group">
+     
+      <select
+  
+      id="invoicetype"
+      class="form-control"
+      ngModel
+      name="invoicetype"
+      required
+      #invoicetype="ngModel">
+  <option value="">Παρακαλώ Επιλέξτε</option>
+  <option value="1">Αγοράς - Πώλησης</option>
+  <option value="2">Παροχής Υπηρεσιών</option>
+  <option value="3">Πιστωτικό</option>
+  <span class="help-block" *ngIf="!invoicetype.valid && invoicetype.touched">Ο τύπος τιμολογίου είναι υποχρεωτικό πεδίο</span>
 
-    id="invoiceType"
-    class="form-control"
-    ngModel
-    name="invoicetype"
-    required
-    #invoiceType="ngModel">
-<option value="">Παρακαλώ Επιλέξτε</option>
-<option value="1">Αγοράς - Πώλησης</option>
-<option value="2">Παροχής Υπηρεσιών</option>
-<option value="3">Πιστωτικό</option>
-<span class="help-block" *ngIf="!invoiceType.valid && invoiceType.touched">Ο τύπος τιμολογίου είναι υποχρεωτικό πεδίο</span>
-
-
-</select>
-
+  
+  </select>
 </div> 
 
 </div>
 
-<h1 style="color: black;font-size:30px;">Προϊόν-Υπηρεσία</h1>    
-<div class="item">
-
-  <p>Τιμή προϊόντος</p>
-  
-  <div class="form-group">
-      <input
-        type="text"
-        id="productprice"
-        class="form-control"
-        ngModel
-        name="productprice"
-        required
-        #productprice="ngModel" placeholder="Τιμή προϊόντος"/>
-        <span class="help-block" *ngIf="!productprice.valid && productprice.touched">Η τιμή προϊόντος είναι υποχρεωτικό πεδίο</span>
-
-    </div>
-
-    <p>Ποσότητα</p>
-  
-    <div class="form-group">
-        <input
-          type="text"
-          id="quantity"
-          class="form-control"
-          ngModel
-          name="quantity"
-          required
-          #quantity="ngModel" placeholder="Ποσότητα"/>
-          <span class="help-block" *ngIf="!quantity.valid && quantity.touched">Η τιμή προϊόντος είναι υποχρεωτικό πεδίο</span>
-        
-      </div>
-
-
-      <p>ΦΠΑ</p>
-  
-      <div class="form-group">
-          <input
-            type="text"
-            id="vat"
-            class="form-control"
-            ngModel
-            name="vat"
-            required
-            #vat="ngModel" placeholder="ΦΠΑ"/>
-            <span class="help-block" *ngIf="!vat.valid && vat.touched">Η τιμή προϊόντος είναι υποχρεωτικό πεδίο</span>
-          
-        </div>
-  
-
-
-    <p>Έκπτωση</p>
-  
-    <div class="form-group">
-        <input
-          type="text"
-          id="discount"
-          class="form-control"
-          ngModel
-          name="discount"
-          #discount="ngModel" placeholder="Έκπτωση"/>
-        
-      </div>
-
-      <p>Συνολική Τιμή</p>
-  
-      <div class="form-group">
-          <input
-            type="text"
-            id="totalamount"
-            class="form-control"
-            ngModel
-            name="totalamount"
-            #totalamount="ngModel" placeholder="Συνολική Τιμή"/>
-            <span class="help-block" *ngIf="!totalamount.valid && totalamount.touched">Η Συνολική Τιμή είναι υποχρεωτικό πεδίο</span>
-        </div>
-  
-
-
-  
 </div>
 
 
 
+<div class="card">
+  <form [formGroup]="userForm">
+    <div class="mt-5">
+      <div class="form-row">
+        <div class="col-md-12">
+          <div class="form-group">
+            <label > Προϊόν </label>
+          </div>
+          <div class="form-row">
+              <div class="col">
+                <div>
+                  <select>
+                    <option *ngFor="let player of loadedProducts" [value]="player.productDescription">
+                        {{player.productDescription}}
+                    </option>
+                </select>
+                 </div>
+              </div>  
+          </div>
+        </div>
 
-
-
+        <div class="col-md-12">
+          <div class="form-group">
+            <label > Ποσότητα </label>
+          </div>
+          <div class="form-row">
+              <div class="col">
+                <input type="number" [(ngModel)]="quantity">
+              </div>
+          </div>
+        </div>
+        <br>
+        <div class="form-row mt-4">
+          <div class="col-md-6">
+            <button type="button" class="btn btn-primary" (click)="addItem()">Add</button> &nbsp; &nbsp; &nbsp;&nbsp; &nbsp; &nbsp;&nbsp; &nbsp; &nbsp;&nbsp;    &nbsp; &nbsp;
+            <button type="button" class="btn btn-primary" (click)="reset()">reset</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </form>
+  <div class="col-md-8 mt-4 mb-4">
+    <table class="table table-bordered">
+      <thead>
+        <tr>
+          <th>Προϊόν</th>
           <th>Τιμή προϊόντος</th>
           <th>Έκπτωση</th>
           <th>ΦΠΑ</th>
           <th>Ποσότητα</th>
           <th>Συνολική Τιμή</th>
-
-
-
-
-
-
-
-
-
-
-
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor = "let product of loadedProducts">
+          <td>{{product.productDescription}}</td>
+          <td>{{product.pricePerItem}}</td>
+          <td>{{product.discount}}</td>
+          <td>{{product.vat.vatValue}}</td>
+          <td>{{ quantity }}</td>  
+          <td>Keppo</td>
+          <td><button type="button" class="btn btn-primary" (click)="removeItems(item)">Remove</button></td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
 </div>
 <button
 class="btn btn-primary"
 type="submit"
 [disabled]="!f.valid">Submit</button>
-
-
-
-
 </form>
-
-
 
  </div> 
  </body> 
- </html>` 
+ </html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

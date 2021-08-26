@@ -104,7 +104,7 @@
               class="form-control"
               ngModel
               name="city"
-              required  
+              required
               #city="ngModel">
               <option *ngFor="let city of cities" [value]="city">{{city}}</option>
             </select>

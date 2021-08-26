@@ -51,10 +51,7 @@ export class ProductsListComponent implements OnInit {
         this.products = posts;
       });
   }
-
-
- 
-   }
+}
   
 
 

@@ -6,11 +6,13 @@ import { ErrorPageComponent } from './error-page/error-page.component';
 import { ProductsListComponent } from './products-list/products-list.component';
 import { TransactorFormComponent } from './transactor-form/transactor-form.component';
 import { TransactorShowComponent } from './transactor-show/transactor-show.component';
+import { InvoiceFormCustomerComponent } from './invoice-form-customer/invoice-form-customer.component';
+
 
 
 const appRoutes: Routes = [
   { path: '', component: ProductsListComponent },
-  { path: 'clientInvoice', component: ProductsListComponent },
+  { path: 'clientInvoice', component: InvoiceFormCustomerComponent },
   { path: 'supplierInvoice', component: InvoiceSuppliersFormComponent },
   { path: 'searchInvoice', component: ProductsListComponent },
   { path: 'transactors', component: TransactorFormComponent },
