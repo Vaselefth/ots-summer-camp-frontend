@@ -130,14 +130,11 @@ ngModelGroup="userData"
 
        
 
-<select>
-<option value="">Χώρα</option>
-<option value="1">Ελλάδα</option>
-<option value="2">Γερμανία</option>
-<option value="3">Γαλλία</option>
-<option value="4">Αμερική</option>
-<option value="5">Αγγλία</option>
-</select>
+        <select>
+          <option value="">Χώρα</option>
+          <option value="1">Ελλάδα</option>
+          <option value="2">Εξωτερικό</option>
+          </select>
 
 </div>
 
@@ -177,12 +174,24 @@ ngModelGroup="userData"
 
 <div class="item">
 <p>Ημερομηνία Έκδοσης</p>
-<input type="date" name="name" required/>
+
+<input
+type="date"
+id="date"
+class="form-control"
+ngModel
+name="date"
+required
+date
+#date="ngModel">
+<span class="help-block" *ngIf="!date.valid && date.touched">Η ημερομηνία είναι υποχρεωτικό πεδίο</span>
+
 <i class="fas fa-calendar-alt"></i>
 </div>
+
 <div class="item">
 <p>Ώρα Έκδοσης</p>
-<input type="time" name="name" required/>
+<input type="time" name="name"/>
 <i class="fas fa-clock"></i>
 </div>
 <div class="item">
@@ -203,6 +212,8 @@ ngModelGroup="userData"
   <option value="1">Αγοράς - Πώλησης</option>
   <option value="2">Παροχής Υπηρεσιών</option>
   <option value="3">Πιστωτικό</option>
+  <span class="help-block" *ngIf="!invoicetype.valid && invoicetype.touched">Ο τύπος τιμολογίου είναι υποχρεωτικό πεδίο</span>
+
   
   </select>
 </div> 
