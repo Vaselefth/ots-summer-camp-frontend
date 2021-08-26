@@ -1,8 +1,10 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { RouterModule } from '@angular/router';
+import { BrowserAnimationsModule } from "@angular/platform-browser/animations";
 import { TransactorFormComponent } from './transactor-form/transactor-form.component';
 import { AppRoutingModule } from './app-routing.module';
+
 
 import { AppComponent } from './app.component';  
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';  
@@ -13,23 +15,29 @@ import { ProductService } from './product.service';
 import { TransactorFormService } from './transactor-form/transactor-form.service';
 import { TransactorShowComponent } from './transactor-show/transactor-show.component';
 import { TransactorShowService } from './transactor-show/transactor-show.service';
+import { InvoiceFormCustomerComponent } from './invoice-form-customer/invoice-form-customer.component';
 import { InvoiceSuppliersFormComponent } from './invoice-suppliers-form/invoice-suppliers-form.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     TransactorFormComponent,
-    ProductsListComponent,
     TransactorShowComponent,
+    InvoiceFormCustomerComponent,
+    ProductsListComponent,
+    TransactorShowComponent,  
     InvoiceSuppliersFormComponent
   ],
   imports: [
     BrowserModule,  
+    BrowserAnimationsModule,
+
     AppRoutingModule,  
     FormsModule,  
     ReactiveFormsModule,  
     HttpClientModule,
-    RouterModule
+    RouterModule,
+
   ],
   providers: [ProductService,TransactorFormService,TransactorShowService],
   bootstrap: [AppComponent]

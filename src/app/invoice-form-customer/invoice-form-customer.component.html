@@ -1,0 +1,306 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Invoice Form Customer</title>
+<link href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700" rel="stylesheet">
+<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.5.0/css/all.css" integrity="sha384-B4dIYHKNBt8Bc12p+WXckhzcICo0wtJAoU8YZTY5qE0Id1GSseTk6S+L3BlXeVIU" crossorigin="anonymous">
+
+</head>
+<body>
+
+
+ <div class="testbox"> 
+<form (ngSubmit)="onSubmit()" #f="ngForm">
+<h1>Έκδοση Τιμολογίου</h1>
+
+
+<div
+id="user-data"
+ngModelGroup="userData"
+#userData="ngModelGroup">
+
+<div class="form-group">
+    <p>Στοιχεία Φυσικού/Νομικού Εκπροσώπου</p>
+    <input
+    type="text"
+    id="firstName"
+    class="form-control"
+    ngModel
+    name="firstName"
+    required
+    #firstName="ngModel" placeholder="Όνομα">
+    <span class="help-block" *ngIf="!firstName.valid && firstName.touched">Το Όνομα είναι υποχρεωτικό πεδίο</span>
+</div>
+
+<div class="form-group">
+    <input
+    type="text"
+    id="lastName"
+    class="form-control"
+    ngModel
+    name="lastName"
+    required
+    #firstName="ngModel" placeholder="Επώνυμο">
+    <span class="help-block" *ngIf="!firstName.valid && firstName.touched">Το Επώνυμο είναι υποχρεωτικό πεδίο</span>
+</div>
+
+<div class="form-group">
+<p>Στοιχεία Επιχείρησης</p>
+<input
+    type="text"
+    id="companyName"
+    class="form-control"
+    ngModel
+    name="companyName"
+    #companyName="ngModel"  placeholder="Επωνυμία Επιχείρησης" />
+<div class="companyDetails-item">
+    <div class="form-group">
+        <input
+          (keypress)="numberOnly($event)"
+          type="text"
+          id="tin"
+          class="form-control"
+          ngModel
+          name="tin"
+          required
+          #tin="ngModel"
+          minlength="9"
+          maxlength="9" placeholder="ΑΦΜ">
+          <span class="help-block" *ngIf="!tin.valid && tin.touched">Το ΑΦΜ δεν είναι έγκυρο, πρέπει να είναι Αριθμός 9 ψηφίων</span>
+      </div>
+
+      <div class="form-group">
+        <input
+          type="text"
+          id="doy"
+          class="form-control"
+          ngModel
+          name="doy"
+          required placeholder="ΔΟΥ">
+      </div>
+</div>
+</div>
+
+<div class="item">
+<p>Διεύθυνση</p>
+
+<div class="form-group">
+    <input
+      type="text"
+      id="address"
+      class="form-control"
+      ngModel
+      name="address"
+      required
+      #address="ngModel" placeholder="Διεύθυνση"/>
+      <span class="help-block" *ngIf="!address.valid && address.touched">Η Διεύθυνση είναι υποχρεωτικό πεδίο</span>
+  </div>
+
+
+
+    <div class="form-group">
+        <p>Πόλη</p>
+        <select
+          id="city"
+          class="form-control"
+          ngModel
+          name="city"
+          required
+          #city="ngModel" placeholder="Πόλη">
+          <option *ngFor="let city of cities" [value]="city">{{city}}</option>
+        </select>
+        <span class="help-block" *ngIf="!city.valid && city.touched">Η Πόλη είναι υποχρεωτικό πεδίο</span>
+      </div> 
+
+      <div class="form-group">
+        <p>Ταχυδρομικός Κώδικας</p>
+        <input
+          (keypress)="numberOnly($event)"
+          type="text"
+          id="postalCode"
+          class="form-control"
+          ngModel
+          name="postalCode"
+          required
+          #postalCode="ngModel"
+          minlength="5"
+          maxlength="5" placeholder="Ταχυδρομικός κώδικας">
+          <span class="help-block" *ngIf="!postalCode.valid && postalCode.touched">Ο Ταχυδρομικός Κώδικας είναι υποχρεωτικό πεδίο και πρέπει να είναι Αριθμός 5 ψηφίων</span>
+        </div>
+
+       
+
+<select>
+<option value="">Χώρα</option>
+<option value="1">Ελλάδα</option>
+<option value="2">Γερμανία</option>
+<option value="3">Γαλλία</option>
+<option value="4">Αμερική</option>
+<option value="5">Αγγλία</option>
+</select>
+
+</div>
+
+<div class="item">
+<p>Στοιχεία Επικοινωνίας</p>
+<div class="form-group">
+
+    <input
+      type="email"
+      id="email"
+      class="form-control"
+      ngModel
+      name="email"
+      required
+      email
+      #email="ngModel" placeholder="E-mail">
+      <span class="help-block" *ngIf="!email.valid && email.touched">Το email δεν είναι έγκυρης μορφής</span>
+    </div>
+
+    <div class="form-group">
+     
+        <input
+          (keypress)="numberOnly($event)"
+          type="text"
+          id="phoneNumber"
+          class="form-control"
+          ngModel
+          name="phoneNumber"
+          required
+          #phoneNumber="ngModel"
+          minlength="10"
+          maxlength="10" placeholder="Αριθμός τηλεφώνου">
+          <span class="help-block" *ngIf="!phoneNumber.valid && phoneNumber.touched">Ο αριθμός τηλεφώνου δεν είναι έγκυρος, πρέπει να είναι Αριθμός 10 ψηφίων</span>
+      </div>
+
+</div>
+
+<div class="item">
+<p>Ημερομηνία Έκδοσης</p>
+<input type="date" name="name" required/>
+<i class="fas fa-calendar-alt"></i>
+</div>
+<div class="item">
+<p>Ώρα Έκδοσης</p>
+<input type="time" name="name" required/>
+<i class="fas fa-clock"></i>
+</div>
+<div class="item">
+  <p>Τύπος Τιμολογίου</p>
+
+
+  <div class="form-group">
+     
+      <select
+  
+      id="invoicetype"
+      class="form-control"
+      ngModel
+      name="invoicetype"
+      required
+      #invoicetype="ngModel">
+  <option value="">Παρακαλώ Επιλέξτε</option>
+  <option value="1">Αγοράς - Πώλησης</option>
+  <option value="2">Παροχής Υπηρεσιών</option>
+  <option value="3">Πιστωτικό</option>
+  
+  </select>
+</div> 
+
+</div>
+
+</div>
+
+
+
+<div class="card">
+  <form [formGroup]="userForm">
+    <div class="mt-5">
+      <div class="form-row">
+        <div class="col-md-12">
+          <div class="form-group">
+            <label > Προϊόν </label>
+          </div>
+          <div class="form-row">
+              <div class="col">
+                <div>
+                  <select>
+                    <option *ngFor="let player of loadedProducts" [value]="player.productDescription">
+                        {{player.productDescription}}
+                    </option>
+                </select>
+                 </div>
+              </div>  
+          </div>
+        </div>
+
+        <div class="col-md-12">
+          <div class="form-group">
+            <label > Ποσότητα </label>
+          </div>
+          <div class="form-row">
+              <div class="col">
+                <input type="number" [(ngModel)]="quantity">
+              </div>
+          </div>
+        </div>
+        <br>
+        <div class="form-row mt-4">
+          <div class="col-md-6">
+            <button type="button" class="btn btn-primary" (click)="addItem()">Add</button> &nbsp; &nbsp; &nbsp;&nbsp; &nbsp; &nbsp;&nbsp; &nbsp; &nbsp;&nbsp;    &nbsp; &nbsp;
+            <button type="button" class="btn btn-primary" (click)="reset()">reset</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </form>
+  <div class="col-md-8 mt-4 mb-4">
+    <table class="table table-bordered">
+      <thead>
+        <tr>
+          <th>Προϊόν</th>
+          <th>Τιμή προϊόντος</th>
+          <th>Έκπτωση</th>
+          <th>ΦΠΑ</th>
+          <th>Ποσότητα</th>
+          <th>Συνολική Τιμή</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor = "let product of loadedProducts">
+          <td>{{product.productDescription}}</td>
+          <td>{{product.pricePerItem}}</td>
+          <td>{{product.discount}}</td>
+          <td>{{product.vat.vatValue}}</td>
+          <td>{{ quantity }}</td>  
+          <td>Keppo</td>
+          <td><button type="button" class="btn btn-primary" (click)="removeItems(item)">Remove</button></td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>
+<button
+class="btn btn-primary"
+type="submit"
+[disabled]="!f.valid">Submit</button>
+</form>
+
+ </div> 
+ </body> 
+ </html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
