@@ -7,11 +7,19 @@ export interface Invoice {
     address: string,
     city: string,
   postalCode: string,
+  country: number,
     email: string,
     phoneNumber: string,
-    date: string;
-    invoiceType: boolean,
-   // id?: string
+    date: Date;
+    invoiceType: number,
+    description: string,
+    productprice: number,
+    quantity: number,
+    discount: number,
+    priorfpa: number,
+    vat: number,
+    totalamount: number,
+    id?: string
    
 }
 
