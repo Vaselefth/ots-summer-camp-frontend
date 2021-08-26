@@ -27,9 +27,6 @@ export class InvoiceFormCustomerComponent implements OnInit {
 
   loadedProducts: Product[] = [];
 
-  userForm: FormGroup
-  listData: any[];
-
   @ViewChild('f', { static: false }) signupForm: NgForm;
   cities = ['Αθήνα', 'Θεσσαλονίκη', 'Πάτρα','Ηράκλειο','Λάρισα','Βόλος','Ιωάννινα','Τρίκαλα','Χαλκίδα','Σέρρες'];
 
@@ -76,24 +73,6 @@ export class InvoiceFormCustomerComponent implements OnInit {
     console.log(invoice);
     this.postInvoice(invoice);
   } 
-
-  addItem() {
-    this.listData.push(this.userForm.value);
-    this.userForm.reset();
-  }
-
-  reset(){
-    this.userForm.reset();
-  }
-
-  removeItems(element:any){
-    this.listData.forEach((value:any,dex:any) => {
-      if(value == element){
-        this.listData.splice(dex,1)
-      }
-
-    });
-  }
 
   private fetchPosts() {  
     this.http
