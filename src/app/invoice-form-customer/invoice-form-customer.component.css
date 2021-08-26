@@ -1,4 +1,13 @@
     
+      
+            .box{
+              width: 101%;
+      
+              border-radius: 55px;
+              padding: 0px 10px 200px 30px;
+              margin-right: 20px;
+            }
+      
       html, body {
       min-height: 100%;
       }
@@ -126,13 +135,7 @@
       width: calc(50% - 8px);
       }
 
-      .box{
-        width: 500%;
-        border: 1px solid rgb(145, 138, 138);
-        border-radius: 25px;
-        padding: 0px 20px 20px 20px;
-        margin-left: 400px;
-      }
+
 
 
 
