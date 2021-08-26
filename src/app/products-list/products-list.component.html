@@ -14,11 +14,14 @@
           </tr>
         </thead>
         <tbody>
+          
             <tr *ngFor="let pr of products">
+             
                  <td>{{pr.productDescription}}</td>
                  <td>{{pr.pricePerItem}}</td>
                 <td>{{pr.discount}}</td>
                 <td>{{pr.vat.vatValue}}</td>
+                
           </tr>
         </tbody>
       </table>

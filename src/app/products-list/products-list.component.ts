@@ -2,7 +2,8 @@ import { HttpClient } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
 import { ProductService } from '../product.service';
 import { Product } from '../product';
-import {map} from 'rxjs/operators'
+import {map} from 'rxjs/operators';
+import { Router } from '@angular/router';
 
 
 @Component({
@@ -16,7 +17,7 @@ export class ProductsListComponent implements OnInit {
 
  
 
-  constructor(private http: HttpClient) { 
+  constructor(private http: HttpClient, private router: Router, private productService: ProductService) { 
   }
 
 

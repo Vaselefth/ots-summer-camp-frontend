@@ -19,6 +19,11 @@ id="user-data"
 ngModelGroup="userData"
 #userData="ngModelGroup">
 
+
+<div class="item">
+  <h2>Στοιχεία Συναλλασσόμενου</h2>
+<p></p>
+
 <div class="form-group">
     <p>Στοιχεία Φυσικού/Νομικού Εκπροσώπου</p>
     <input
@@ -53,6 +58,7 @@ ngModelGroup="userData"
     ngModel
     name="companyName"
     #companyName="ngModel"  placeholder="Επωνυμία Επιχείρησης" />
+
 <div class="companyDetails-item">
     <div class="form-group">
         <input
@@ -129,12 +135,22 @@ ngModelGroup="userData"
         </div>
 
        
-
-<select>
-<option value="">Χώρα</option>
-<option value="1">Ελλάδα</option>
-<option value="2">Εξωτερικό</option>
-</select>
+        <div class="form-group">
+          <p>Χώρα</p>
+          <select>
+              <input
+              id="country"
+              class="form-control"
+              ngModel
+              name="country"
+              required
+              #country="ngModel">
+          <option value="">Παρακαλώ Επιλέξτε</option>
+          <option value="0">Αγοράς - Πώλησης</option>
+          <option value="1">Παροχής Υπηρεσιών</option>
+          </select>
+          
+          </div>
 
 </div>
 
@@ -172,6 +188,15 @@ ngModelGroup="userData"
 
 </div>
 
+</div>
+
+
+
+<h2>Στοιχεία Τιμολογίου</h2>
+
+
+
+<div class="item">
 <div class="item">
 <p>Ημερομηνία Έκδοσης</p>
 
@@ -189,11 +214,7 @@ date
 <i class="fas fa-calendar-alt"></i>
 </div>
 
-<div class="item">
-  <p>Ώρα Έκδοσης</p>
-  <input type="time" name="name"/>
-  <i class="fas fa-clock"></i>
-  </div>
+
 
 <div class="item">
 <p>Τύπος Τιμολογίου</p>
@@ -203,17 +224,17 @@ date
    
     <select
 
-    id="invoicetype"
+    id="invoiceType"
     class="form-control"
     ngModel
-    name="invoicetype"
+    name="invoiceType"
     required
-    #invoicetype="ngModel">
+    #invoiceType="ngModel">
 <option value="">Παρακαλώ Επιλέξτε</option>
 <option value="1">Αγοράς - Πώλησης</option>
 <option value="2">Παροχής Υπηρεσιών</option>
 <option value="3">Πιστωτικό</option>
-<span class="help-block" *ngIf="!invoicetype.valid && invoicetype.touched">Ο τύπος τιμολογίου είναι υποχρεωτικό πεδίο</span>
+<span class="help-block" *ngIf="!invoiceType.valid && invoiceType.touched">Ο τύπος τιμολογίου είναι υποχρεωτικό πεδίο</span>
 
 
 </select>
@@ -221,14 +242,29 @@ date
 </div> 
 
 </div>
+<div class="item">
+  <p>Περιφραφή</p>
+  
+  <input
+  type="text"
+  id="description"
+  class="form-control"
+  ngModel
+  name="description"
+  
+  description
+  #description="ngModel">
+</div>
+</div>
+<h2>Προϊόν-Υπηρεσία  </h2>
 
-<h1 style="color: black;font-size:30px;">Προϊόν-Υπηρεσία</h1>    
 <div class="item">
 
   <p>Τιμή προϊόντος</p>
   
   <div class="form-group">
       <input
+      (keypress)="numberOnly($event)"
         type="text"
         id="productprice"
         class="form-control"
@@ -244,6 +280,7 @@ date
   
     <div class="form-group">
         <input
+        (keypress)="numberOnly($event)"
           type="text"
           id="quantity"
           class="form-control"
@@ -256,10 +293,49 @@ date
       </div>
 
 
+     
+
+    <p>Έκπτωση</p>
+  
+    <div class="form-group">
+        <input
+        (keypress)="numberOnly($event)"
+          type="text"
+          id="discount"
+          class="form-control"
+          ngModel
+          name="discount"
+          #discount="ngModel" placeholder="Έκπτωση"/>
+        
+      </div>
+
+
+
+      <p>Τιμή προ ΦΠΑ</p>
+  
+      <div class="form-group">
+          <input
+          (keypress)="numberOnly($event)"
+            type="text"
+            id="priorfpa"
+            class="form-control"
+            ngModel
+            name="priorfpa"
+            #priorfpa="ngModel" placeholder="Τιμή προ ΦΠΑ"/>
+        </div>
+  
+
+
+
+
+
+
+
       <p>ΦΠΑ</p>
   
       <div class="form-group">
           <input
+          (keypress)="numberOnly($event)"
             type="text"
             id="vat"
             class="form-control"
@@ -273,23 +349,11 @@ date
   
 
 
-    <p>Έκπτωση</p>
-  
-    <div class="form-group">
-        <input
-          type="text"
-          id="discount"
-          class="form-control"
-          ngModel
-          name="discount"
-          #discount="ngModel" placeholder="Έκπτωση"/>
-        
-      </div>
-
       <p>Συνολική Τιμή</p>
   
       <div class="form-group">
           <input
+          (keypress)="numberOnly($event)"
             type="text"
             id="totalamount"
             class="form-control"
@@ -307,13 +371,6 @@ date
 
 
 
-
-
-          <th>Τιμή προϊόντος</th>
-          <th>Έκπτωση</th>
-          <th>ΦΠΑ</th>
-          <th>Ποσότητα</th>
-          <th>Συνολική Τιμή</th>
 
 
 
