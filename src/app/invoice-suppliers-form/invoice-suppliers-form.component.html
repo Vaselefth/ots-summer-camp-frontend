@@ -9,23 +9,9 @@
 <body>
 
 
-
-    <div>
-        <label>
-        Yes or no?
-        <select>
-        <option value="">---</option>
-        <option value="">Yes</option>
-        <option value="">No</option>
-        </select>
-        </label>
-        </div>
-
-
-
  <div class="testbox"> 
 <form (ngSubmit)="onSubmit()" #f="ngForm">
-<h1>Έκδοση Τιμολογίου</h1>
+<h1>Έκχώρηση Τιμολογίου Προμηθευτή</h1>
 
 
 <div
@@ -147,10 +133,7 @@ ngModelGroup="userData"
 <select>
 <option value="">Χώρα</option>
 <option value="1">Ελλάδα</option>
-<option value="2">Γερμανία</option>
-<option value="3">Γαλλία</option>
-<option value="4">Αμερική</option>
-<option value="5">Αγγλία</option>
+<option value="2">Εξωτερικό</option>
 </select>
 
 </div>
@@ -205,22 +188,13 @@ date
 
 <i class="fas fa-calendar-alt"></i>
 </div>
+
 <div class="item">
-<p>Ώρα Έκδοσης</p>
+  <p>Ώρα Έκδοσης</p>
+  <input type="time" name="name"/>
+  <i class="fas fa-clock"></i>
+  </div>
 
-
-<input
-type="time"
-id="time"
-class="form-control"
-ngModel
-name="time"
-time
-#time="ngModel">
-
-
-<i class="fas fa-clock"></i>
-</div>
 <div class="item">
 <p>Τύπος Τιμολογίου</p>
 
@@ -247,6 +221,24 @@ time
 </div> 
 
 </div>
+
+
+<th>Προϊόν</th>
+          <th>Τιμή προϊόντος</th>
+          <th>Έκπτωση</th>
+          <th>ΦΠΑ</th>
+          <th>Ποσότητα</th>
+          <th>Συνολική Τιμή</th>
+
+
+
+
+
+
+
+
+
+
 
 </div>
 <button
