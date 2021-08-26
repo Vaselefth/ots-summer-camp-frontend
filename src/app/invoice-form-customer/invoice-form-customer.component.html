@@ -10,12 +10,13 @@
 
 <div class="container"> 
     <form (ngSubmit)="onSubmit()" #f="ngForm">
-        <h2>Έκδοση Τιμολογίου</h2>
+        <h1>Έκδοση Τιμολογίου</h1>
         <div
         id="user-data"  
         ngModelGroup="userData"
         #userData="ngModelGroup"> 
         <div class="form-group">
+            <h2>Στοιχεία Συναλλασσόμενου</h2>
             <p>Στοιχεία Φυσικού/Νομικού Εκπροσώπου</p>
             <input
             type="text"
@@ -158,6 +159,10 @@
             <span class="help-block" *ngIf="!phoneNumber.valid && phoneNumber.touched">Ο αριθμός τηλεφώνου δεν είναι έγκυρος, πρέπει να είναι Αριθμός 10 ψηφίων</span>
         </div>
 
+
+        <h2>Στοιχεία Τιμολογίου</h2>
+
+
         <p>Ημερομηνία Έκδοσης</p>
         <div class="form-group">
             <input 
@@ -192,6 +197,9 @@
                 <option value="3">Πιστωτικό</option>
             </select>
         </div> 
+
+        <h2>Προϊόν-Υπηρεσία  </h2>
+
 
         <div class="form-group">
             <label>Προϊόν</label>
