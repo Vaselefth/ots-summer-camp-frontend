@@ -25,6 +25,9 @@ export class InvoiceFormCustomerComponent implements OnInit {
   productVat=0;
   totalValue: number = 0;
 
+  productToAdd = {};
+  addedProducts = [];
+
   loadedProducts: Product[] = [];
 
   @ViewChild('f', { static: false }) signupForm: NgForm;
@@ -57,8 +60,10 @@ export class InvoiceFormCustomerComponent implements OnInit {
         this.productDiscount=p.discount;
         this.productVat=p.vat.vatValue;
         this.totalValue = Number(((p.pricePerItem - (p.discount * p.pricePerItem) + (p.pricePerItem * p.vat.vatValue)) * Number(this.quantity)).toFixed(2));
+        this.productToAdd = {name:this.productName, price: this.productPrice, discount:this.productDiscount, vat:this.productVat, total: this.totalValue};
     }
   }
+  this.addedProducts.push(this.productToAdd);
 }
 
   onSubmit() {
@@ -71,7 +76,7 @@ export class InvoiceFormCustomerComponent implements OnInit {
     transactor.abroad = Number(transactor.abroad); */
     //true = 1 
     console.log(invoice);
-    this.postInvoice(invoice);
+    this.postInvoice(invoice);  
   } 
 
   private fetchPosts() {  

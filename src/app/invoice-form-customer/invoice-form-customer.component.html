@@ -237,13 +237,13 @@
         </tr>
       </thead>
       <tbody>
-        <tr>
-          <td>{{productName}}</td>
-          <td>{{productPrice}}</td>
-          <td>{{productDiscount}}</td>
-          <td>{{productVat}}</td>  
+        <tr *ngFor="let p of addedProducts">
+          <td>{{p.name}}</td>
+          <td>{{p.price}}</td>
+          <td>{{p.discount}}</td>
+          <td>{{p.vat}}</td>  
           <td>{{quantity}}</td>
-          <td>{{totalValue}}</td>
+          <td>{{p.total}}</td>
         </tr>
       </tbody>
     </table>
