@@ -21,7 +21,7 @@ export class LogInComponent {
     const username = form.value.username;
     const password = form.value.password;
 
-    let authObs: Observable<AuthResponseData>;
+    //let authObs: Observable<AuthResponseData>;
 
     this.authService.login(username, password).subscribe(response=>{
       if(response !== null){
@@ -29,7 +29,8 @@ export class LogInComponent {
         this.myUsername = response.username
         this.myPassword = response.password
         this.myRole = response.role
-        console.log(response.role)
+        console.log(response)
+        
       }
     });
 
