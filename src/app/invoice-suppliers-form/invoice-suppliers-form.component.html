@@ -1,4 +1,4 @@
-`<!DOCTYPE html>
+<!DOCTYPE html>
 <html>
 <head>
 <title>Invoice Form Customer</title>
@@ -218,30 +218,21 @@ date
 
 <div class="item">
 <p>Τύπος Τιμολογίου</p>
-
-
-<div class="form-group">
-   
-    <select
-
-    id="invoiceType"
-    class="form-control"
-    ngModel
-    name="invoiceType"
-    required
-    #invoiceType="ngModel">
-<option value="">Παρακαλώ Επιλέξτε</option>
-<option value="1">Αγοράς - Πώλησης</option>
-<option value="2">Παροχής Υπηρεσιών</option>
-<option value="3">Πιστωτικό</option>
-<span class="help-block" *ngIf="!invoiceType.valid && invoiceType.touched">Ο τύπος τιμολογίου είναι υποχρεωτικό πεδίο</span>
-
-
-</select>
-
-</div> 
-
+        <div class="form-group">
+            <select
+                id="invoicetype"
+                class="form-control"
+                ngModel
+                name="invoicetype"
+                required
+                #invoicetype="ngModel">
+                <option *ngFor="let type of types" [value]="type.type">
+                    {{type.type}}
+                </option>
+            </select>
+        </div>
 </div>
+  
 <div class="item">
   <p>Περιφραφή</p>
   
