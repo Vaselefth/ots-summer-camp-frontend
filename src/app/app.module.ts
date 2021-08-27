@@ -10,7 +10,6 @@ import { HttpClient } from '@angular/common/http';
 import { HttpClientModule } from '@angular/common/http';
 import { AppComponent } from './app.component';  
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';   
-//import {DataTablesModule} from 'angular-datatables';  
 import { ProductsListComponent } from './products-list/products-list.component';
 import { ProductService } from './product.service';
 import { TransactorFormService } from './transactor-form/transactor-form.service';

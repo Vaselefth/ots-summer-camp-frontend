@@ -3,7 +3,6 @@ import { NgForm } from '@angular/forms';
 import { Invoice } from '../invoice';
 import { InvoiceSuppliersFormService } from './invoice-suppliers-form.service';
 import { HttpClient } from '@angular/common/http';
-import { Product } from '../product';
 import { AuthService } from '../auth.service';
 
 @Component({
