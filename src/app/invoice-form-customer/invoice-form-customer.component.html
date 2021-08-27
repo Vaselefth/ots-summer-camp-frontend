@@ -8,17 +8,14 @@
 </head>
 <body>
 
-    <button type="button" class="btn btn-primary" (click)="onLogout()">Logout</button>
 <div class="container"> 
-    
     <form (ngSubmit)="onSubmit()" #f="ngForm">
-        <h1>Έκδοση Τιμολογίου</h1>
+        <h2>Έκδοση Τιμολογίου</h2>
         <div
         id="user-data"  
         ngModelGroup="userData"
         #userData="ngModelGroup"> 
         <div class="form-group">
-            <h2>Στοιχεία Συναλλασσόμενου</h2>
             <p>Στοιχεία Φυσικού/Νομικού Εκπροσώπου</p>
             <input
             type="text"
@@ -161,10 +158,6 @@
             <span class="help-block" *ngIf="!phoneNumber.valid && phoneNumber.touched">Ο αριθμός τηλεφώνου δεν είναι έγκυρος, πρέπει να είναι Αριθμός 10 ψηφίων</span>
         </div>
 
-
-        <h2>Στοιχεία Τιμολογίου</h2>
-
-
         <p>Ημερομηνία Έκδοσης</p>
         <div class="form-group">
             <input 
@@ -193,15 +186,24 @@
                 name="invoicetype"
                 required
                 #invoicetype="ngModel">
-                <option value="">Παρακαλώ Επιλέξτε</option>
-                <option value="1">Αγοράς - Πώλησης</option>
-                <option value="2">Παροχής Υπηρεσιών</option>
-                <option value="3">Πιστωτικό</option>
+                <option *ngFor="let type of types" [value]="type.type">
+                    {{type.type}}
+                </option>
             </select>
-        </div> 
+        </div>
 
-        <h2>Προϊόν-Υπηρεσία  </h2>
-
+        <div class="form-group">
+            <label for="isProduct">Προϊόν ή Υπηρεσία</label>
+            <select
+                id="isProduct"
+                class="form-control"
+                ngModel
+                name="isProduct"
+                required>
+                <option value="0">Προϊόν</option>
+                <option value="1">Υπηρεσία</option>
+            </select>
+        </div>
 
         <div class="form-group">
             <label>Προϊόν</label>
