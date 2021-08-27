@@ -48,6 +48,7 @@ export class AuthService {
 
   logout(){
 
+    this.user.next(null);
     this.router.navigate(['/']);
   }
 
