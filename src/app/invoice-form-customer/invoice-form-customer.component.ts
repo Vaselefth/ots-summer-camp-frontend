@@ -3,7 +3,6 @@ import { NgForm } from '@angular/forms';
 import { Invoice } from '../invoice';
 import { InvoiceSuppliersFormService } from './invoice-form-customer.service';
 import { HttpClient } from '@angular/common/http';
-import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Product } from '../product';
 import { map } from 'rxjs/operators';
 import { AuthService } from '../auth.service';
