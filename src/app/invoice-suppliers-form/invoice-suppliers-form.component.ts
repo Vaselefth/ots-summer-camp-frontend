@@ -4,6 +4,7 @@ import { Invoice } from '../invoice';
 import { InvoiceSuppliersFormService } from './invoice-suppliers-form.service';
 import { HttpClient } from '@angular/common/http';
 import { AuthService } from '../auth.service';
+import { InvoiceType } from '../invoice-type';
 
 @Component({
   selector: 'app-invoice-suppliers-form',
@@ -11,6 +12,9 @@ import { AuthService } from '../auth.service';
   styleUrls: ['./invoice-suppliers-form.component.css']
 })
 export class InvoiceSuppliersFormComponent implements OnInit {
+  
+  invoiceTypeUrl = "http://localhost:8080/api/invoicetypes";
+  types: InvoiceType[] = [];
 
   
   @ViewChild('f', { static: false }) signupForm: NgForm;
@@ -19,7 +23,7 @@ export class InvoiceSuppliersFormComponent implements OnInit {
   constructor(private invoiceSuppliersFormService: InvoiceSuppliersFormService, private http: HttpClient, private authService: AuthService) { }
 
   ngOnInit(): void {
-    
+    this.fetchInvoiceTypes();
   }
 
 
@@ -44,6 +48,26 @@ export class InvoiceSuppliersFormComponent implements OnInit {
     console.log(invoice);
     this.postInvoice(invoice);
   } 
+  
+  private fetchInvoiceTypes() {  
+    this.http
+      .get<{ [key: string]: InvoiceType }>(this.invoiceTypeUrl)
+      .pipe(
+        map(responseData => {
+          const invoiceTypesArray: InvoiceType[] = [];
+          for (const key in responseData) {
+            if (responseData.hasOwnProperty(key)) {
+              invoiceTypesArray.push({ ...responseData[key], id: Number(key) });
+            }
+          }
+          return invoiceTypesArray;
+        })
+      )
+      .subscribe(posts => {
+        console.log(posts);
+        this.types = posts;
+      });
+  }
 
   onLogout(){
     this.authService.logout();
