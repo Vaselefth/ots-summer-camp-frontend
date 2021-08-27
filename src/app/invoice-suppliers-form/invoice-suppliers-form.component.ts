@@ -41,12 +41,6 @@ export class InvoiceSuppliersFormComponent implements OnInit {
    onSubmit() {
     
     let invoice = this.signupForm.value.userData;
-    
-    //convert tin string to number
-    /* transactor.tin = Number(transactor.tin);    
-    transactor.transactorType = Number(transactor.transactorType);
-    transactor.abroad = Number(transactor.abroad); */
-    //true = 1 
     console.log(invoice);
     this.postInvoice(invoice);
   }
