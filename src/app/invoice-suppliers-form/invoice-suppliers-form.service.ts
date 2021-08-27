@@ -7,7 +7,7 @@ import { Invoice } from '../invoice';
   providedIn: 'root'
 })
 export class InvoiceSuppliersFormService {
- baseUrl = 'http://localhost:8080/api/productService';  
+ baseUrl = 'http://localhost:8080/api/postInvoices';  
 
 
 

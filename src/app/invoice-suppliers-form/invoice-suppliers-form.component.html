@@ -134,23 +134,21 @@ ngModelGroup="userData"
           <span class="help-block" *ngIf="!postalCode.valid && postalCode.touched">Ο Ταχυδρομικός Κώδικας είναι υποχρεωτικό πεδίο και πρέπει να είναι Αριθμός 5 ψηφίων</span>
         </div>
 
-       
-        <div class="form-group">
-          <p>Χώρα</p>
-          <select>
-              <input
-              id="country"
-              class="form-control"
-              ngModel
-              name="country"
-              required
-              #country="ngModel">
-          <option value="">Παρακαλώ Επιλέξτε</option>
-          <option value="0">Ελλάδα</option>
-          <option value="1">Εξωτερικό</option>
-          </select>
-          
+          <div class="item">
+            <p>Χωρα</p>
+          <div class="form-group">
+            <select
+                id="isAbroad"
+                class="form-control"
+                ngModel
+                name="isAbroad"
+                required>
+                <option value="0">Ελλαδα</option>
+                <option value="1">Εξωτερικό</option>
+            </select>
           </div>
+          </div>
+          
 
 </div>
 
@@ -236,12 +234,11 @@ date
   <p>Τύπος Τιμολογίου</p>
           <div class="form-group">
               <select
-                  id="invoicetype"
+                  id="invoiceType"
                   class="form-control"
                   ngModel
-                  name="invoicetype"
-                  required
-                  #invoicetype="ngModel">
+                  name="invoiceType"
+                  required>
                   <option *ngFor="let type of types" [value]="type.type">
                       {{type.type}}
                   </option>
@@ -251,10 +248,11 @@ date
 
 
 </div>
-<h2>Προϊόν-Υπηρεσία  </h2>
+<h2>Προϊόν-Υπηρεσία</h2>
 
+<div class="item">
+  <p>Προϊόν ή Υπηρεσία</p>
 <div class="form-group">
-  <label for="isProduct">Προϊόν ή Υπηρεσία</label>
   <select
       id="isProduct"
       class="form-control"
@@ -265,6 +263,8 @@ date
       <option value="1">Υπηρεσία</option>
   </select>
 </div>
+</div>
+
 
 <div class="item">
 

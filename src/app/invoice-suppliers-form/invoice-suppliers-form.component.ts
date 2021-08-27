@@ -43,9 +43,14 @@ export class InvoiceSuppliersFormComponent implements OnInit {
     
     //convert tin string to number
      invoice.tin = Number(invoice.tin);    
-    invoice.invoiceType = Number(invoice.invoiceType);
-    //transactor.abroad = Number(transactor.abroad); 
-    //true = 1 
+     invoice.isAbroad = Number(invoice.isAbroad);
+     invoice.productprice = Number(invoice.productprice);    
+     invoice.quantity = Number(invoice.quantity);   
+     invoice.discount = Number(invoice.discount);   
+     invoice.priorfpa = Number(invoice.priorfpa);  
+     invoice.vat = Number(invoice.vat);  
+     invoice.totalamount = Number(invoice.totalamount);  
+    
     console.log(invoice);
     this.postInvoice(invoice);
   } 

@@ -81,7 +81,8 @@ export class InvoiceFormCustomerComponent implements OnInit {
   onSubmit() {
     let invoice = this.signupForm.value.userData;
     console.log(invoice);
-    this.postInvoice(invoice);  
+    //console.log(invoice.invoiceType);
+    //this.postInvoice(invoice);  
   } 
 
   private fetchPosts() {  
