@@ -4,6 +4,9 @@ import { Invoice } from '../invoice';
 import { InvoiceSuppliersFormService } from './invoice-suppliers-form.service';
 import { HttpClient } from '@angular/common/http';
 import { Product } from '../product';
+import { map } from 'rxjs/operators';
+import { InvoiceType } from '../invoice-type';
+
 
 @Component({
   selector: 'app-invoice-suppliers-form',
@@ -12,6 +15,9 @@ import { Product } from '../product';
 })
 export class InvoiceSuppliersFormComponent implements OnInit {
 
+  invoiceTypeUrl = "http://localhost:8080/api/invoicetypes";
+  types: InvoiceType[] = [];
+
   
   @ViewChild('f', { static: false }) signupForm: NgForm;
   cities = ['Αθήνα', 'Θεσσαλονίκη', 'Πάτρα','Ηράκλειο','Λάρισα','Βόλος','Ιωάννινα','Τρίκαλα','Χαλκίδα','Σέρρες'];
@@ -19,7 +25,7 @@ export class InvoiceSuppliersFormComponent implements OnInit {
   constructor(private invoiceSuppliersFormService: InvoiceSuppliersFormService, private http: HttpClient) { }
 
   ngOnInit(): void {
-    
+    this.fetchInvoiceTypes();
   }
 
 
@@ -43,7 +49,27 @@ export class InvoiceSuppliersFormComponent implements OnInit {
     //true = 1 
     console.log(invoice);
     this.postInvoice(invoice);
-  } 
+  }
+
+  private fetchInvoiceTypes() {  
+    this.http
+      .get<{ [key: string]: InvoiceType }>(this.invoiceTypeUrl)
+      .pipe(
+        map(responseData => {
+          const invoiceTypesArray: InvoiceType[] = [];
+          for (const key in responseData) {
+            if (responseData.hasOwnProperty(key)) {
+              invoiceTypesArray.push({ ...responseData[key], id: Number(key) });
+            }
+          }
+          return invoiceTypesArray;
+        })
+      )
+      .subscribe(posts => {
+        console.log(posts);
+        this.types = posts;
+      });
+  }
 
 }
 

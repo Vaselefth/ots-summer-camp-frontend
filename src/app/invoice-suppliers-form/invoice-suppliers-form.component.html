@@ -221,32 +221,44 @@ time
 
 <i class="fas fa-clock"></i>
 </div>
+
 <div class="item">
 <p>Τύπος Τιμολογίου</p>
-
-
-<div class="form-group">
-   
-    <select
-
-    id="invoicetype"
-    class="form-control"
-    ngModel
-    name="invoicetype"
-    required
-    #invoicetype="ngModel">
-<option value="">Παρακαλώ Επιλέξτε</option>
-<option value="1">Αγοράς - Πώλησης</option>
-<option value="2">Παροχής Υπηρεσιών</option>
-<option value="3">Πιστωτικό</option>
-<span class="help-block" *ngIf="!invoicetype.valid && invoicetype.touched">Ο τύπος τιμολογίου είναι υποχρεωτικό πεδίο</span>
-
-
-</select>
-
+        <div class="form-group">
+            <select
+                id="invoicetype"
+                class="form-control"
+                ngModel
+                name="invoicetype"
+                required
+                #invoicetype="ngModel">
+                <option *ngFor="let type of types" [value]="type.type">
+                    {{type.type}}
+                </option>
+            </select>
+        </div>
 </div> 
 
+<div class="item">
+  <p>Προϊόν ή Υπηρεσία</p>
+<div class="form-group">
+  <select
+      id="isProduct"
+      class="form-control"
+      ngModel
+      name="isProduct"
+      required>
+      <option value="0">Προϊόν</option>
+      <option value="1">Υπηρεσία</option>
+  </select>
 </div>
+</div>
+
+
+
+
+
+
 
 </div>
 <button
@@ -263,4 +275,4 @@ type="submit"
 
  </div> 
  </body> 
- </html>` 
+ </html>

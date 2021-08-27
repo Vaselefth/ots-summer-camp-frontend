@@ -3,9 +3,9 @@ import { NgForm } from '@angular/forms';
 import { Invoice } from '../invoice';
 import { InvoiceSuppliersFormService } from './invoice-form-customer.service';
 import { HttpClient } from '@angular/common/http';
-import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Product } from '../product';
 import { map } from 'rxjs/operators';
+import { InvoiceType } from '../invoice-type';
 
 @Component({
   selector: 'app-invoice-form-customer',
@@ -15,7 +15,9 @@ import { map } from 'rxjs/operators';
 
 export class InvoiceFormCustomerComponent implements OnInit {
 
-  baseUrl = 'http://localhost:8080/api/productService';  
+  baseUrl = 'http://localhost:8080/api/productService';
+  invoiceTypeUrl = "http://localhost:8080/api/invoicetypes";
+
 
   quantity="";
   tempProduct="";
@@ -29,7 +31,8 @@ export class InvoiceFormCustomerComponent implements OnInit {
   addedProducts = [];
 
   loadedProducts: Product[] = [];
-
+  types: InvoiceType[] = [];
+  
   @ViewChild('f', { static: false }) signupForm: NgForm;
   cities = ['Αθήνα', 'Θεσσαλονίκη', 'Πάτρα','Ηράκλειο','Λάρισα','Βόλος','Ιωάννινα','Τρίκαλα','Χαλκίδα','Σέρρες'];
 
@@ -37,8 +40,9 @@ export class InvoiceFormCustomerComponent implements OnInit {
   constructor(private invoiceSuppliersFormService: InvoiceSuppliersFormService, private http: HttpClient) { 
   }
   
-  ngOnInit(): void {
-    this.fetchPosts();
+  ngOnInit(): void {  
+    this.fetchProducts();
+    this.fetchInvoiceTypes();
   }
 
   numberOnly(event): boolean {
@@ -55,7 +59,6 @@ export class InvoiceFormCustomerComponent implements OnInit {
           this.addedProducts.splice(i,1);
       }
     }
-    console.log(this.addedProducts);
   }
 
   onAdd() {
@@ -88,7 +91,7 @@ export class InvoiceFormCustomerComponent implements OnInit {
     this.postInvoice(invoice);  
   } 
 
-  private fetchPosts() {  
+  private fetchProducts() {  
     this.http
       .get<{ [key: string]: Product }>(this.baseUrl)
       .pipe(
@@ -105,6 +108,26 @@ export class InvoiceFormCustomerComponent implements OnInit {
       .subscribe(posts => {
         console.log(posts);
         this.loadedProducts = posts;
+      });
+  }
+
+  private fetchInvoiceTypes() {  
+    this.http
+      .get<{ [key: string]: InvoiceType }>(this.invoiceTypeUrl)
+      .pipe(
+        map(responseData => {
+          const invoiceTypesArray: InvoiceType[] = [];
+          for (const key in responseData) {
+            if (responseData.hasOwnProperty(key)) {
+              invoiceTypesArray.push({ ...responseData[key], id: Number(key) });
+            }
+          }
+          return invoiceTypesArray;
+        })
+      )
+      .subscribe(posts => {
+        console.log(posts);
+        this.types = posts;
       });
   }
 }

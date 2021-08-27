@@ -186,12 +186,24 @@
                 name="invoicetype"
                 required
                 #invoicetype="ngModel">
-                <option value="">Παρακαλώ Επιλέξτε</option>
-                <option value="1">Αγοράς - Πώλησης</option>
-                <option value="2">Παροχής Υπηρεσιών</option>
-                <option value="3">Πιστωτικό</option>
+                <option *ngFor="let type of types" [value]="type.type">
+                    {{type.type}}
+                </option>
             </select>
-        </div> 
+        </div>
+
+        <div class="form-group">
+            <label for="isProduct">Προϊόν ή Υπηρεσία</label>
+            <select
+                id="isProduct"
+                class="form-control"
+                ngModel
+                name="isProduct"
+                required>
+                <option value="0">Προϊόν</option>
+                <option value="1">Υπηρεσία</option>
+            </select>
+        </div>
 
         <div class="form-group">
             <label>Προϊόν</label>
