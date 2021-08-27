@@ -146,8 +146,8 @@ ngModelGroup="userData"
               required
               #country="ngModel">
           <option value="">Παρακαλώ Επιλέξτε</option>
-          <option value="0">Αγοράς - Πώλησης</option>
-          <option value="1">Παροχής Υπηρεσιών</option>
+          <option value="0">Ελλάδα</option>
+          <option value="1">Εξωτερικό</option>
           </select>
           
           </div>
@@ -216,22 +216,7 @@ date
 
 
 
-<div class="item">
-<p>Τύπος Τιμολογίου</p>
-        <div class="form-group">
-            <select
-                id="invoicetype"
-                class="form-control"
-                ngModel
-                name="invoicetype"
-                required
-                #invoicetype="ngModel">
-                <option *ngFor="let type of types" [value]="type.type">
-                    {{type.type}}
-                </option>
-            </select>
-        </div>
-</div>
+
   
 <div class="item">
   <p>Περιφραφή</p>
@@ -246,6 +231,25 @@ date
   description
   #description="ngModel">
 </div>
+
+<div class="item">
+  <p>Τύπος Τιμολογίου</p>
+          <div class="form-group">
+              <select
+                  id="invoicetype"
+                  class="form-control"
+                  ngModel
+                  name="invoicetype"
+                  required
+                  #invoicetype="ngModel">
+                  <option *ngFor="let type of types" [value]="type.type">
+                      {{type.type}}
+                  </option>
+              </select>
+          </div>
+  </div>
+
+
 </div>
 <h2>Προϊόν-Υπηρεσία  </h2>
 
@@ -377,7 +381,7 @@ date
 <button
 class="btn btn-primary"
 type="submit"
-[disabled]="!f.valid">Submit</button>
+>Submit</button>
 
 
 

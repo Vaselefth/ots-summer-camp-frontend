@@ -6,13 +6,13 @@ export interface Invoice {
     doy: string,
     address: string,
     city: string,
-  postalCode: string,
-  country: number,
+    postalCode: string,
+    country: string,
     email: string,
     phoneNumber: string,
     date: Date;
-    invoiceType: number,
     description: string,
+    invoiceType: number,
     productprice: number,
     quantity: number,
     discount: number,
@@ -20,6 +20,5 @@ export interface Invoice {
     vat: number,
     totalamount: number,
     id?: string
-   
 }
 
