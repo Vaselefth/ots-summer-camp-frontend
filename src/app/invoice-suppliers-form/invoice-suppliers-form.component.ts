@@ -5,6 +5,7 @@ import { InvoiceSuppliersFormService } from './invoice-suppliers-form.service';
 import { HttpClient } from '@angular/common/http';
 import { AuthService } from '../auth.service';
 import { InvoiceType } from '../invoice-type';
+import { map } from 'rxjs/operators';
 
 @Component({
   selector: 'app-invoice-suppliers-form',
