@@ -2,8 +2,6 @@ import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Invoice } from '../invoice';
 import { Product } from '../product';
-import { map } from 'rxjs/operators';
-import { InvoiceType } from '../invoice-type';
 
 @Injectable({
   providedIn: 'root'
@@ -39,5 +37,4 @@ export class InvoiceSuppliersFormService {
         }
       );
   }
-
 }
