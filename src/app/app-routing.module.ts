@@ -19,23 +19,15 @@ const appRoutes: Routes = [
   { path: 'menu/searchInvoice', component: ProductsListComponent },
   { path: 'menu/transactors', component: TransactorFormComponent },
   { path: 'menu/searchTransactor', component: TransactorShowComponent },
-  { path: 'menu/products', component: ProductsListComponent } ];
-  /* { path: 'users', component: UsersComponent, children: [
-    { path: ':id/:name', component: UserComponent }
-  ] },
-  {
-    path: 'servers',
-    // canActivate: [AuthGuard],
-    canActivateChild: [AuthGuard],
-    component: ServersComponent,
-    children: [
-    { path: ':id', component: ServerComponent, resolve: {server: ServerResolver} },
-    { path: ':id/edit', component: EditServerComponent, canDeactivate: [CanDeactivateGuard] }
-  ] },
-  // { path: 'not-found', component: PageNotFoundComponent },
+  { path: 'menu/products', component: ProductsListComponent },
+  { path: 'not-found', component: PageNotFoundComponent },
   { path: 'not-found', component: ErrorPageComponent, data: {message: 'Page not found!'} },
   { path: '**', redirectTo: '/not-found' }
-] */
+];
+  
+  
+    
+   
 
 @NgModule({
   imports: [
