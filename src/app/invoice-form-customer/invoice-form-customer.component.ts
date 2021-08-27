@@ -7,6 +7,7 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Product } from '../product';
 import { map } from 'rxjs/operators';
 import { AuthService } from '../auth.service';
+import { InvoiceType } from '../invoice-type';
 
 @Component({
   selector: 'app-invoice-form-customer',
@@ -16,7 +17,8 @@ import { AuthService } from '../auth.service';
 
 export class InvoiceFormCustomerComponent implements OnInit {
 
-  baseUrl = 'http://localhost:8080/api/productService';  
+  baseUrl = 'http://localhost:8080/api/productService';
+  invoiceTypeUrl = "http://localhost:8080/api/invoicetypes";
 
   quantity="";
   tempProduct="";
@@ -30,6 +32,7 @@ export class InvoiceFormCustomerComponent implements OnInit {
   addedProducts = [];
 
   loadedProducts: Product[] = [];
+  types: InvoiceType[] = [];
 
   @ViewChild('f', { static: false }) signupForm: NgForm;
   cities = ['Αθήνα', 'Θεσσαλονίκη', 'Πάτρα','Ηράκλειο','Λάρισα','Βόλος','Ιωάννινα','Τρίκαλα','Χαλκίδα','Σέρρες'];
@@ -40,6 +43,7 @@ export class InvoiceFormCustomerComponent implements OnInit {
   
   ngOnInit(): void {
     this.fetchPosts();
+    this.fetchInvoiceTypes();
   }
 
   numberOnly(event): boolean {
@@ -56,7 +60,6 @@ export class InvoiceFormCustomerComponent implements OnInit {
           this.addedProducts.splice(i,1);
       }
     }
-    console.log(this.addedProducts);
   }
 
   onAdd() {
@@ -77,14 +80,7 @@ export class InvoiceFormCustomerComponent implements OnInit {
 }
 
   onSubmit() {
-
     let invoice = this.signupForm.value.userData;
-    
-    //convert tin string to number
-    /* transactor.tin = Number(transactor.tin);    
-    transactor.transactorType = Number(transactor.transactorType);
-    transactor.abroad = Number(transactor.abroad); */
-    //true = 1 
     console.log(invoice);
     this.postInvoice(invoice);  
   } 
@@ -106,6 +102,26 @@ export class InvoiceFormCustomerComponent implements OnInit {
       .subscribe(posts => {
         console.log(posts);
         this.loadedProducts = posts;
+      });
+  }
+  
+  private fetchInvoiceTypes() {  
+    this.http
+      .get<{ [key: string]: InvoiceType }>(this.invoiceTypeUrl)
+      .pipe(
+        map(responseData => {
+          const invoiceTypesArray: InvoiceType[] = [];
+          for (const key in responseData) {
+            if (responseData.hasOwnProperty(key)) {
+              invoiceTypesArray.push({ ...responseData[key], id: Number(key) });
+            }
+          }
+          return invoiceTypesArray;
+        })
+      )
+      .subscribe(posts => {
+        console.log(posts);
+        this.types = posts;
       });
   }
 
