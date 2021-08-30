@@ -1,3 +1,5 @@
+import { Time } from "@angular/common";
+
 export interface Invoice {
     firstName: string,
     lastName: string,
@@ -10,10 +12,12 @@ export interface Invoice {
     isAbroad: number,
     email: string,
     phoneNumber: string,
-    date: Date;
+    date: Date,
+    time: Time,
     description: string,
     invoiceType: string,
     isProduct: number,
+    productName: string,
     productprice: number,
     quantity: number,
     discount: number,
