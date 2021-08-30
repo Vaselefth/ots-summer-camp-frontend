@@ -8,6 +8,8 @@ import { AuthService } from '../auth.service';
 })
 export class MenuComponent implements OnInit {
 
+  myLogo: string = "assets/logo/logo.jpg";
+
   constructor(private authService: AuthService) { }
 
   ngOnInit(): void {

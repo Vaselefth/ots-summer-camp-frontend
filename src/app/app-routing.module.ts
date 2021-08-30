@@ -9,6 +9,7 @@ import { TransactorShowComponent } from './transactor-show/transactor-show.compo
 import { InvoiceFormCustomerComponent } from './invoice-form-customer/invoice-form-customer.component';
 import { MenuComponent } from './menu/menu.component';
 import { LogInComponent } from './log-in/log-in.component';
+import { AuthGuard } from './log-in/auth.guard';
 
 
 const appRoutes: Routes = [
