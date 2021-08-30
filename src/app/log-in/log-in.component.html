@@ -31,7 +31,7 @@
             required
             minlength="4"
             #password="ngModel" placeholder="Συνθηματικό">
-            <span class="help-block" *ngIf="!password.valid && password.touched">Το συνθηματικό είναι υποχρεωτικό πεδίο</span>
+            <span class="help-block" *ngIf="!password.valid && password.touched">Το συνθηματικό είναι υποχρεωτικό πεδίο και πρέπει να είναι τουλάχιστον 4 χαρακτήρες</span>
           </div>
           <div class="button">
             <button 
