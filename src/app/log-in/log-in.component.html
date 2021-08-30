@@ -1,8 +1,13 @@
-<div class="container">
+<div class="body">
+<div class="container" class="border border-primary">
+
+  <!--<img src="C:/Desktop/ots-summer-camp-frontend/logo/WD_Logo.png" alt="myLogo" width="50" height="50" />-->
+  <img id="image" [src]= "myLogo" alt="logo" />
+
     <div class="row">
       <div class="col-xs-12 col-md-3 col-md-offset-4">
 
-         <form #authForm="ngForm" (ngSubmit)="onSubmit(authForm)">
+         <form #authForm="ngForm" (ngSubmit)="onSubmit(authForm)" id="form">
 
           <div class="form-group">
             <label for="username">Username</label>
@@ -12,7 +17,9 @@
             class="form-control"
             ngModel
             name="username"
-            >
+            required
+            #userName="ngModel" placeholder="Όνομα Χρήστη">
+            <span class="help-block" *ngIf="!userName.valid && userName.touched">Το όνομα χρήστη είναι υποχρεωτικό πεδίο</span>
           </div>
           <div class="form-group">
             <label for="password">Password</label>
@@ -23,18 +30,18 @@
             name="password"
             required
             minlength="4"
-            >
+            #password="ngModel" placeholder="Συνθηματικό">
+            <span class="help-block" *ngIf="!password.valid && password.touched">Το συνθηματικό είναι υποχρεωτικό πεδίο</span>
           </div>
-          <div>
-            <button
+          <div class="button">
+            <button 
           class="btn btn-primary" type="submit" [disabled]="!authForm.valid">Login
         
-          <!--<a [routerLink]="menu"></a>-->
           </button>
           </div>
          </form>
 
       </div>
     </div>
-    <!--<router-outlet></router-outlet>-->
   </div>
+</div>

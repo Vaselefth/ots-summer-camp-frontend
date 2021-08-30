@@ -14,7 +14,7 @@ import { AuthGuard } from './log-in/auth.guard';
 
 const appRoutes: Routes = [
   { path: '', component: LogInComponent },
-  {path: 'menu',  component: MenuComponent, },
+  {path: 'menu',  component: MenuComponent },
   { path: 'menu/clientInvoice', component: InvoiceFormCustomerComponent },
   { path: 'menu/supplierInvoice', component: InvoiceSuppliersFormComponent },
   { path: 'menu/searchInvoice', component: ProductsListComponent },
