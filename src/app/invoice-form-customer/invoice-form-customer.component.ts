@@ -30,7 +30,10 @@ export class InvoiceFormCustomerComponent implements OnInit {
   productToAdd = {};
   addedProducts = [];
 
+  selectedValue: string = "0";
+  loadedProductsAndServices: Product[] = [];
   loadedProducts: Product[] = [];
+  loadedServices: Product[] = [];
   types: InvoiceType[] = [];
 
   @ViewChild('f', { static: false }) signupForm: NgForm;
@@ -43,6 +46,28 @@ export class InvoiceFormCustomerComponent implements OnInit {
   ngOnInit(): void {
     this.fetchPosts();
     this.fetchInvoiceTypes();
+  }
+
+  fillLoadedProductAndServices(selectedValue) {
+    if(selectedValue === '0') {
+      for(let p of this.loadedProductsAndServices) {
+        if(p.product == true) {
+          this.loadedProducts.push(p);
+        }
+      }
+    }
+    else if(selectedValue === '1') {
+      for(let p of this.loadedProductsAndServices) {
+        if(p.product == false) {
+          this.loadedServices.push(p);
+        }
+      }
+    }
+  }
+
+  selection(event:any) {
+    this.selectedValue = event.target.value;
+    this.fillLoadedProductAndServices(this.selectedValue); 
   }
 
   numberOnly(event): boolean {
@@ -65,7 +90,7 @@ export class InvoiceFormCustomerComponent implements OnInit {
     let product = this.signupForm.value.userData;
     this.quantity = product.quantity;
     this.tempProduct = product.product;
-    for(let p of this.loadedProducts) {
+    for(let p of this.loadedProductsAndServices) {
       if(this.tempProduct === p.productDescription) {
         this.productName = p.productDescription;
         this.productPrice=p.pricePerItem;
@@ -101,7 +126,7 @@ export class InvoiceFormCustomerComponent implements OnInit {
       )
       .subscribe(posts => {
         console.log(posts);
-        this.loadedProducts = posts;
+        this.loadedProductsAndServices = posts;
       });
   }
   

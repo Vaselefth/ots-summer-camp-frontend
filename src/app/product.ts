@@ -6,6 +6,7 @@ export interface Product {
     pricePerItem:number;
     discount:number;
     product_service:number;
+    product:boolean;
     vat: Vat;
 }
 

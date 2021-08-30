@@ -188,8 +188,9 @@
             <select
                 id="isProduct"
                 class="form-control"
-                ngModel
+                [(ngModel)]="selectedValue"
                 name="isProduct"
+                (change)="selection($event)"
                 required>
                 <option value="0">Προϊόν</option>
                 <option value="1">Υπηρεσία</option>
@@ -197,16 +198,24 @@
         </div>
 
         <div class="form-group">
-            <label>Προϊόν</label>
+            <label *ngIf="selectedValue === '0'">Προϊόν</label>
+            <label *ngIf="selectedValue === '1'">Υπηρεσία</label>
             <select
              id="product"
              class="form-control"
-             ngModel
+             ngModel    
              name="product"
              required>
+            <ng-container *ngIf="selectedValue === '0'">
                 <option *ngFor="let product of loadedProducts" [value]="product.productDescription">
                     {{product.productDescription}}
                 </option>
+            </ng-container>
+            <ng-container *ngIf="selectedValue === '1'">
+                <option *ngFor="let product of loadedServices" [value]="product.productDescription">
+                    {{product.productDescription}}
+                </option>
+            </ng-container>
             </select>
         </div>
 
