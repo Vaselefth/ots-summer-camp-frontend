@@ -44,30 +44,28 @@ export class InvoiceFormCustomerComponent implements OnInit {
   }
   
   ngOnInit(): void {
-    this.fetchPosts();
     this.fetchInvoiceTypes();
+    this.fillLoadedProductAndServices();
   }
 
-  fillLoadedProductAndServices(selectedValue) {
-    if(selectedValue === '0') {
+  private async fillLoadedProductAndServices() {
+    await this.fetchPosts();
+    setTimeout(() => {
       for(let p of this.loadedProductsAndServices) {
         if(p.product == true) {
           this.loadedProducts.push(p);
         }
-      }
     }
-    else if(selectedValue === '1') {
-      for(let p of this.loadedProductsAndServices) {
+    for(let p of this.loadedProductsAndServices) {
         if(p.product == false) {
           this.loadedServices.push(p);
         }
-      }
     }
+    }, 2000);
   }
 
   selection(event:any) {
     this.selectedValue = event.target.value;
-    this.fillLoadedProductAndServices(this.selectedValue); 
   }
 
   numberOnly(event): boolean {
@@ -110,7 +108,7 @@ export class InvoiceFormCustomerComponent implements OnInit {
     //this.postInvoice(invoice);  
   } 
 
-  private fetchPosts() {  
+  private async fetchPosts() {  
     this.http
       .get<{ [key: string]: Product }>(this.baseUrl)
       .pipe(
